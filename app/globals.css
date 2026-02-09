@@ -505,6 +505,20 @@ section {
   font-size: 0.8rem;
 }
 
+.urdu-inline {
+  margin-inline-start: 0.65rem;
+  font-family: var(--font-urdu), serif;
+  font-weight: 600;
+  font-size: 1.02em;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--gold);
+  opacity: 0.92;
+  direction: rtl;
+  unicode-bidi: isolate;
+  vertical-align: baseline;
+}
+
 .section-sub {
   color: var(--muted);
   line-height: 1.7;

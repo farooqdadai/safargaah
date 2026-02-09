@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Manrope, Oswald } from "next/font/google";
+import { Manrope, Noto_Nastaliq_Urdu, Oswald } from "next/font/google";
 import ScrollReveal from "./components/ScrollReveal";
 
 const oswald = Oswald({
@@ -14,6 +14,12 @@ const manrope = Manrope({
   variable: "--font-body"
 });
 
+const notoNastaliqUrdu = Noto_Nastaliq_Urdu({
+  subsets: ["arabic"],
+  weight: ["400", "600"],
+  variable: "--font-urdu"
+});
+
 export const metadata = {
   title: "Safargaah | Pakistan Travel",
   description:
@@ -22,7 +28,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${oswald.variable} ${manrope.variable}`}>
+    <html
+      lang="en"
+      className={`${oswald.variable} ${manrope.variable} ${notoNastaliqUrdu.variable}`}
+    >
       <body>
         <ScrollReveal />
         {children}

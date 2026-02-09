@@ -1019,7 +1019,12 @@ export default function Home() {
 
         <div className="about-grid">
           <div className="about-content reveal">
-            <p className="kicker">What Safargaah offers</p>
+            <p className="kicker">
+              What Safargaah offers{" "}
+              <span className="urdu-inline" lang="ur" dir="rtl">
+                پیشکش
+              </span>
+            </p>
             <h2>Tours and weekend trips in Pakistan</h2>
             <p className="about-copy">
               Choose a multi-day tour package, a 2-day plan, or a single-day
@@ -1052,7 +1057,12 @@ export default function Home() {
       <section className="tours" id="tours">
         <div className="tours-head reveal">
           <div>
-            <p className="kicker">Tour packages</p>
+            <p className="kicker">
+              Tour packages{" "}
+              <span className="urdu-inline" lang="ur" dir="rtl">
+                پیکجز
+              </span>
+            </p>
             <h2>Explore tour plans</h2>
             <p className="section-sub tours-sub">
               Multi-day tours across Pakistan, including the north, heritage
@@ -1129,7 +1139,12 @@ export default function Home() {
           />
         </div>
         <div className="weekend-intent-head reveal">
-          <p className="kicker">Weekend trips</p>
+          <p className="kicker">
+            Weekend trips{" "}
+            <span className="urdu-inline" lang="ur" dir="rtl">
+              سیر
+            </span>
+          </p>
           <h2>One-day adventures and two-day plans</h2>
           <p className="weekend-sub">
             Pick a quick single-day experience, or follow a simple two-day loop
@@ -1217,7 +1232,12 @@ export default function Home() {
 
       <section className="favorites">
         <div className="favorites-head reveal">
-          <p className="kicker">Destinations</p>
+          <p className="kicker">
+            Destinations{" "}
+            <span className="urdu-inline" lang="ur" dir="rtl">
+              مقامات
+            </span>
+          </p>
           <h2>Top places to visit in Pakistan</h2>
           <p className="section-sub">
             Start with these destinations, then pick a tour package or a weekend
@@ -1253,7 +1273,12 @@ export default function Home() {
       <section className="routes">
         <div className="routes-head reveal">
           <div>
-            <p className="kicker">Seasonal routes</p>
+            <p className="kicker">
+              Seasonal routes{" "}
+              <span className="urdu-inline" lang="ur" dir="rtl">
+                راستے
+              </span>
+            </p>
             <h2>Plan a route by season</h2>
             <p className="section-sub routes-sub">
               Summer mountains, autumn cities, winter coast. These routes match
@@ -1322,7 +1347,12 @@ export default function Home() {
         </div>
 
         <div className="moments-head reveal">
-          <p className="kicker">When to go</p>
+          <p className="kicker">
+            When to go{" "}
+            <span className="urdu-inline" lang="ur" dir="rtl">
+              بہترین وقت
+            </span>
+          </p>
           <h2>Best time to visit Pakistan</h2>
           <p className="section-sub">
             A quick guide to seasons, weather, and what to expect across the
@@ -1348,7 +1378,12 @@ export default function Home() {
 
         <div id="trust" className="trust-block">
           <div className="trust-head reveal">
-            <p className="kicker">Trust</p>
+            <p className="kicker">
+              Trust{" "}
+              <span className="urdu-inline" lang="ur" dir="rtl">
+                اعتماد
+              </span>
+            </p>
             <h2>Travel planning you can trust</h2>
             <p className="section-sub">
               Local guides, vetted transport, and support when plans change.
@@ -1394,7 +1429,12 @@ export default function Home() {
         }}
       >
         <div className="experience-text reveal">
-          <p className="kicker">Ready to plan</p>
+          <p className="kicker">
+            Ready to plan{" "}
+            <span className="urdu-inline" lang="ur" dir="rtl">
+              چلیں
+            </span>
+          </p>
           <h2>Plan your next Pakistan trip</h2>
           <button type="button" className="play-line">
             <span className="play-btn" aria-hidden="true">
