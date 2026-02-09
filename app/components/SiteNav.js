@@ -40,9 +40,9 @@ export default function SiteNav({ activePlace }) {
           </div>
         </div>
         <span className="nav-sep" aria-hidden="true" />
-        <span className="nav-item disabled" aria-disabled="true">
+        <Link href="/package" className="nav-item">
           Packages
-        </span>
+        </Link>
         <span className="nav-item disabled" aria-disabled="true">
           Experiences
         </span>

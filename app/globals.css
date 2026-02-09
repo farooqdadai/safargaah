@@ -2691,6 +2691,621 @@ section {
   font-size: 0.7rem;
 }
 
+.package-hero {
+  position: relative;
+  min-height: 75vh;
+  padding: 2.5rem 6vw 3.5rem;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.package-hero--index {
+  min-height: 55vh;
+}
+
+.package-hero-grid {
+  margin-top: 3.2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.9fr);
+  gap: 2.2rem;
+  align-items: start;
+}
+
+.package-hero--index .package-hero-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.package-hero-copy h1 {
+  font-family: var(--font-display), "Impact", sans-serif;
+  font-size: clamp(2.8rem, 5.8vw, 5.2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.22rem;
+  line-height: 0.95;
+}
+
+.package-lede {
+  color: rgba(244, 241, 234, 0.78);
+  line-height: 1.75;
+  max-width: 720px;
+  margin-top: 1.1rem;
+}
+
+.package-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 1.4rem;
+  max-width: 560px;
+}
+
+.package-stat {
+  border: 1px solid rgba(244, 241, 234, 0.14);
+  background: rgba(8, 12, 10, 0.55);
+  border-radius: 18px;
+  padding: 1rem 1.05rem;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(12px);
+}
+
+.stat-label {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.22rem;
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.stat-value {
+  display: block;
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18rem;
+  font-size: 1.02rem;
+  color: var(--text);
+}
+
+.package-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
+}
+
+.package-hero-panel {
+  border: 1px solid rgba(244, 241, 234, 0.14);
+  background: rgba(8, 12, 10, 0.65);
+  border-radius: 22px;
+  padding: 1.6rem;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.46);
+  backdrop-filter: blur(14px);
+}
+
+.package-hero-panel h2 {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 1.15rem;
+  margin: 0.9rem 0 0.8rem;
+}
+
+.panel-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.panel-date {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18rem;
+  font-size: 1.1rem;
+  margin-bottom: 0.65rem;
+}
+
+.panel-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  color: rgba(244, 241, 234, 0.82);
+  letter-spacing: 0.06rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.panel-price {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 1.3rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.package-section {
+  padding: 3.25rem 6vw;
+}
+
+.package-section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2.25rem;
+  max-width: 860px;
+}
+
+.package-section-head h1,
+.package-section-head h2 {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: clamp(2rem, 3.7vw, 3.15rem);
+}
+
+.package-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.package-card {
+  position: relative;
+  border-radius: 20px;
+  min-height: 360px;
+  padding: 1.6rem;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(244, 241, 234, 0.1);
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.44);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.85rem;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.package-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.package-card:hover {
+  transform: translateY(-6px);
+  filter: brightness(1.06);
+}
+
+.package-card-top {
+  align-self: flex-start;
+  margin-bottom: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.package-pill {
+  border: 1px solid rgba(244, 241, 234, 0.16);
+  background: rgba(8, 12, 10, 0.55);
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.65rem;
+  color: rgba(244, 241, 234, 0.88);
+}
+
+.package-card h2 {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18rem;
+  font-size: 1.35rem;
+}
+
+.package-card p {
+  color: rgba(244, 241, 234, 0.74);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.package-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.package-highlights span {
+  border: 1px solid rgba(244, 241, 234, 0.16);
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.65rem;
+  background: rgba(8, 12, 10, 0.35);
+}
+
+.package-dates-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: 1.6rem;
+  align-items: start;
+}
+
+.calendar-card,
+.departure-card {
+  border-radius: 22px;
+  padding: 1.6rem;
+  background: rgba(8, 12, 10, 0.72);
+  border: 1px solid rgba(244, 241, 234, 0.08);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.42);
+}
+
+.calendar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.calendar-title {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.95rem;
+  color: rgba(244, 241, 234, 0.92);
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+.calendar-weekday {
+  text-transform: uppercase;
+  letter-spacing: 0.18rem;
+  font-size: 0.62rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin-top: 0.75rem;
+}
+
+.calendar-blank {
+  height: 42px;
+}
+
+.calendar-day {
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(244, 241, 234, 0.1);
+  background: rgba(244, 241, 234, 0.02);
+  color: rgba(244, 241, 234, 0.92);
+  font-family: var(--font-display), "Impact", sans-serif;
+  letter-spacing: 0.14rem;
+}
+
+.calendar-day.muted {
+  opacity: 0.35;
+  border-style: dashed;
+}
+
+.calendar-day.departure {
+  cursor: pointer;
+  border-color: rgba(126, 181, 156, 0.45);
+  background: rgba(126, 181, 156, 0.08);
+  transition: transform 0.25s ease, filter 0.25s ease, border-color 0.25s ease;
+}
+
+.calendar-day.departure:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+  border-color: rgba(126, 181, 156, 0.75);
+}
+
+.calendar-day.departure.selected {
+  border-color: rgba(226, 92, 46, 0.55);
+  background: rgba(226, 92, 46, 0.14);
+}
+
+.calendar-day.today {
+  box-shadow: 0 0 0 1px rgba(214, 178, 90, 0.35);
+}
+
+.calendar-note {
+  margin-top: 1rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.departure-card h3 {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 1.15rem;
+  margin-bottom: 0.8rem;
+}
+
+.dep-card {
+  border: 1px solid rgba(244, 241, 234, 0.1);
+  border-radius: 18px;
+  padding: 1.3rem;
+  background: rgba(244, 241, 234, 0.02);
+  margin-bottom: 1.2rem;
+}
+
+.dep-date {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18rem;
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+}
+
+.dep-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+  letter-spacing: 0.06rem;
+  color: rgba(244, 241, 234, 0.9);
+}
+
+.dep-row.subtle {
+  color: rgba(244, 241, 234, 0.78);
+}
+
+.dep-status {
+  border: 1px solid rgba(244, 241, 234, 0.18);
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.6rem;
+}
+
+.dep-status.open {
+  border-color: rgba(126, 181, 156, 0.55);
+  background: rgba(126, 181, 156, 0.1);
+  color: rgba(126, 181, 156, 0.98);
+}
+
+.dep-status.limited {
+  border-color: rgba(214, 178, 90, 0.55);
+  background: rgba(214, 178, 90, 0.1);
+  color: rgba(214, 178, 90, 0.95);
+}
+
+.dep-status.soldout {
+  border-color: rgba(226, 92, 46, 0.55);
+  background: rgba(226, 92, 46, 0.12);
+  color: rgba(226, 92, 46, 0.95);
+}
+
+.dep-foot {
+  margin-top: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.dep-list-title {
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.dep-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.dep-list-item {
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(244, 241, 234, 0.08);
+  background: rgba(244, 241, 234, 0.02);
+  border-radius: 16px;
+  padding: 0.85rem 0.95rem;
+  cursor: pointer;
+  color: rgba(244, 241, 234, 0.9);
+  display: grid;
+  gap: 0.2rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.dep-list-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(244, 241, 234, 0.14);
+  background: rgba(244, 241, 234, 0.04);
+}
+
+.dep-list-item.active {
+  border-color: rgba(126, 181, 156, 0.4);
+  background: rgba(126, 181, 156, 0.08);
+}
+
+.dep-list-date {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18rem;
+}
+
+.dep-list-meta {
+  color: var(--muted);
+  letter-spacing: 0.06rem;
+}
+
+.package-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.detail-card {
+  border-radius: 22px;
+  padding: 1.6rem;
+  background: rgba(8, 12, 10, 0.72);
+  border: 1px solid rgba(244, 241, 234, 0.08);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.42);
+}
+
+.detail-card h3 {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 1.15rem;
+  margin-bottom: 0.7rem;
+}
+
+.detail-lede {
+  color: rgba(244, 241, 234, 0.78);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.detail-list {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.detail-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border: 1px solid rgba(244, 241, 234, 0.08);
+  background: rgba(244, 241, 234, 0.02);
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+}
+
+.detail-k {
+  text-transform: uppercase;
+  letter-spacing: 0.18rem;
+  font-size: 0.65rem;
+  color: var(--muted);
+  min-width: 90px;
+}
+
+.detail-v {
+  color: rgba(244, 241, 234, 0.88);
+  letter-spacing: 0.06rem;
+  text-align: right;
+}
+
+.detail-bullets {
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+  color: rgba(244, 241, 234, 0.82);
+  line-height: 1.6;
+}
+
+.detail-bullets li::before {
+  content: "\u2022";
+  color: var(--accent-2);
+  margin-right: 0.6rem;
+}
+
+.detail-note {
+  margin-top: 1rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.itinerary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.itinerary-card {
+  border-radius: 22px;
+  padding: 1.6rem;
+  background: rgba(8, 12, 10, 0.72);
+  border: 1px solid rgba(244, 241, 234, 0.08);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.42);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.itinerary-card:hover {
+  transform: translateY(-4px);
+  filter: brightness(1.06);
+}
+
+.itinerary-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-bottom: 0.9rem;
+}
+
+.itinerary-day {
+  color: var(--accent-2);
+  font-family: var(--font-display), "Impact", sans-serif;
+}
+
+.itinerary-card h3 {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18rem;
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+}
+
+.itinerary-route {
+  color: rgba(244, 241, 234, 0.78);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.itinerary-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.itinerary-tags span {
+  border: 1px solid rgba(244, 241, 234, 0.14);
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.65rem;
+  color: rgba(244, 241, 234, 0.82);
+}
+
+.package-back {
+  margin-top: 2.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.package-notfound {
+  min-height: 75vh;
+}
+
 .modal {
   position: fixed;
   inset: 0;
@@ -2867,6 +3482,19 @@ section {
     grid-template-columns: 1fr;
   }
 
+  .package-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+
+  .package-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .package-dates-grid {
+    grid-template-columns: 1fr;
+  }
+
   .routes-head {
     flex-direction: column;
     align-items: flex-start;
@@ -2999,6 +3627,23 @@ section {
   }
 
   .hero-microcopy {
+    grid-template-columns: 1fr;
+  }
+
+  .package-hero {
+    padding: 2rem 6vw 2.5rem;
+    min-height: 65vh;
+  }
+
+  .package-hero-grid {
+    margin-top: 2.4rem;
+  }
+
+  .package-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .package-grid {
     grid-template-columns: 1fr;
   }
 
