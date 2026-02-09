@@ -831,6 +831,14 @@ section {
   padding: 0 6vw;
 }
 
+.tours-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  justify-content: flex-end;
+}
+
 .intent-ctas {
   display: flex;
   flex-wrap: wrap;
@@ -1429,6 +1437,75 @@ section {
 .weekend {
   position: relative;
   padding: 0 6vw;
+}
+
+.weekend-intent-head {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.weekend-intent-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+  gap: 1.6rem;
+  align-items: start;
+}
+
+.weekend-intent-card {
+  position: relative;
+  border-radius: 20px;
+  padding: 1.8rem;
+  background: linear-gradient(160deg, rgba(10, 15, 13, 0.92), rgba(6, 9, 8, 0.86));
+  border: 1px solid rgba(244, 241, 234, 0.08);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+}
+
+.weekend-intent-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(126, 181, 156, 0.18), transparent 55%),
+    radial-gradient(circle at 90% 10%, rgba(226, 92, 46, 0.14), transparent 60%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.weekend-intent-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.weekend-subhead h3 {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 1.2rem;
+  margin: 0.35rem 0 1.2rem;
+}
+
+.weekend-plan-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.weekend-meta {
+  color: var(--muted);
+  letter-spacing: 0.08rem;
+  text-transform: none;
+  margin-top: 0.4rem;
+}
+
+.weekend-intent-card .adventures-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .weekend-head {
@@ -2231,45 +2308,17 @@ section {
     align-items: flex-start;
   }
 
-  .intent-ctas {
+  .tours-actions {
     justify-content: flex-start;
   }
 
-  .filters {
+  .weekend-intent-grid {
     grid-template-columns: 1fr;
   }
 
-  .planner {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .picks-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .adventures-head {
+  .weekend-plan-head {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .adventures-filters {
-    grid-template-columns: 1fr;
-  }
-
-  .adventures-note {
-    text-align: left;
-  }
-
-  .adventures-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .regions-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .realities-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .moments-grid {
@@ -2350,20 +2399,11 @@ section {
     grid-template-columns: 1fr;
   }
 
-  .filters {
-    gap: 1.1rem;
-  }
-
-  .planner {
-    grid-template-columns: 1fr;
-    align-items: stretch;
-  }
-
-  .picks-grid {
+  .weekend-intent-grid {
     grid-template-columns: 1fr;
   }
 
-  .pick-list.compact {
+  .weekend-intent-card .adventures-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2393,9 +2433,6 @@ section {
     flex: 0 0 85%;
   }
 
-  .adventures-grid,
-  .regions-grid,
-  .realities-grid,
   .moments-grid,
   .activities-grid,
   .blog-grid {
@@ -2409,8 +2446,6 @@ section {
 
   .activity-card,
   .blog-card,
-  .region-card,
-  .reality-card,
   .moment-card {
     scroll-snap-align: start;
   }

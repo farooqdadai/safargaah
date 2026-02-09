@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Carousel from "./components/Carousel";
 import SiteNav from "./components/SiteNav";
 
@@ -186,67 +186,6 @@ const aboutHighlights = [
 
 const aboutTags = ["North", "Culture", "Coast", "Desert"];
 
-const seasons = [
-  {
-    id: "any",
-    label: "Any",
-    hint: "Flexible dates, all-round picks."
-  },
-  {
-    id: "spring",
-    label: "Spring",
-    hint: "Green valleys, blossoms, clear light."
-  },
-  {
-    id: "summer",
-    label: "Summer",
-    hint: "North opens up, lakes and high passes."
-  },
-  {
-    id: "autumn",
-    label: "Autumn",
-    hint: "Golden colors, crisp nights, heritage walks."
-  },
-  {
-    id: "winter",
-    label: "Winter",
-    hint: "Coast, cities, deserts, snow escapes."
-  }
-];
-
-const originCities = ["Islamabad", "Lahore", "Karachi"];
-
-const tripStyles = [
-  { id: "balanced", label: "Balanced" },
-  { id: "adventure", label: "Adventure" },
-  { id: "culture", label: "Culture" },
-  { id: "family", label: "Family" }
-];
-
-const groupTypes = [
-  { id: "any", label: "Any group" },
-  { id: "family", label: "Family" },
-  { id: "couple", label: "Couples" },
-  { id: "friends", label: "Friends" },
-  { id: "solo", label: "Solo" }
-];
-
-const adventureCategories = [
-  { id: "any", label: "Any" },
-  { id: "water", label: "Water" },
-  { id: "air", label: "Air" },
-  { id: "land", label: "Land" },
-  { id: "city", label: "City" }
-];
-
-const regions = [
-  { id: "all", label: "All regions" },
-  { id: "north", label: "North" },
-  { id: "heritage", label: "Heritage" },
-  { id: "coast", label: "Coast" },
-  { id: "desert", label: "Desert" }
-];
-
 const routes = [
   {
     title: "Northern Loop",
@@ -385,33 +324,6 @@ const activities = [
     seasons: ["summer", "spring"],
     regions: ["north"],
     text: "Thrilling rapids along the Swat and Indus river systems."
-  }
-];
-
-const blogArticles = [
-  {
-    title: "A Dawn Drive Through the Karakoram",
-    date: "Aug 12, 2025",
-    tag: "North",
-    excerpt:
-      "First light over the peaks, empty roads, and the quiet calm of the Hunza valley.",
-    image: mountainImage
-  },
-  {
-    title: "Markets, Mosques, and Mughal Gardens",
-    date: "Sep 3, 2025",
-    tag: "Heritage",
-    excerpt:
-      "A slow walk through Lahore's old city, from spice lanes to shaded courtyards.",
-    image: heroImage
-  },
-  {
-    title: "Makran Coast in One Weekend",
-    date: "Oct 18, 2025",
-    tag: "Coast",
-    excerpt:
-      "Sea cliffs, golden sunsets, and a coastal road trip from Karachi to Ormara.",
-    image: beachImage
   }
 ];
 
@@ -598,25 +510,6 @@ const weekendItineraries = [
   }
 ];
 
-const travelRealities = [
-  {
-    title: "Drive Times Change Fast",
-    text: "Pakistan trips are road-first. Keep buffers for traffic, weather, and checkpoints."
-  },
-  {
-    title: "Altitude Is Real",
-    text: "If you are heading north, hydrate, pace hikes, and plan a light first day."
-  },
-  {
-    title: "Weather Swings",
-    text: "A sunny morning can turn into a cold night. Pack layers, not outfits."
-  },
-  {
-    title: "Connectivity Gaps",
-    text: "Some valleys drop signal. Save maps offline and keep essentials in cash."
-  }
-];
-
 const trustBadges = [
   {
     title: "Local guides",
@@ -689,14 +582,6 @@ export default function Home() {
   const [activeVideo, setActiveVideo] = useState(null);
   const [routesApi, setRoutesApi] = useState(null);
   const [toursApi, setToursApi] = useState(null);
-  const [activeSeason, setActiveSeason] = useState("any");
-  const [activeRegion, setActiveRegion] = useState("all");
-  const [activeGroup, setActiveGroup] = useState("any");
-  const [plannerCity, setPlannerCity] = useState(originCities[0]);
-  const [plannerDays, setPlannerDays] = useState(7);
-  const [plannerStyle, setPlannerStyle] = useState(tripStyles[0].id);
-  const [activeAdventureCategory, setActiveAdventureCategory] =
-    useState("any");
   const [activeWeekendId, setActiveWeekendId] = useState(
     weekendItineraries[0].id
   );
@@ -749,182 +634,9 @@ export default function Home() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [activeVideo]);
 
-  const matchesSeason = useCallback(
-    (item) => {
-      if (activeSeason === "any") {
-        return true;
-      }
-      return (item.seasons || []).includes(activeSeason);
-    },
-    [activeSeason]
-  );
-
-  const matchesRegion = useCallback(
-    (item) => {
-      if (activeRegion === "all") {
-        return true;
-      }
-      if (item.region) {
-        return item.region === activeRegion;
-      }
-      return (item.regions || []).includes(activeRegion);
-    },
-    [activeRegion]
-  );
-
-  const filteredTours = useMemo(() => {
-    return tours.filter((tour) => {
-      if (!matchesSeason(tour) || !matchesRegion(tour)) {
-        return false;
-      }
-      if (activeGroup === "any") {
-        return true;
-      }
-      return (tour.groups || []).includes(activeGroup);
-    });
-  }, [activeGroup, matchesRegion, matchesSeason]);
-
-  const filteredRoutes = useMemo(() => {
-    return routes.filter((route) => matchesSeason(route) && matchesRegion(route));
-  }, [matchesRegion, matchesSeason]);
-
-  const filteredActivities = useMemo(() => {
-    return activities.filter((activity) => {
-      if (!matchesSeason(activity) || !matchesRegion(activity)) {
-        return false;
-      }
-      if (activeAdventureCategory === "any") {
-        return true;
-      }
-      return (
-        (activity.category || "").toLowerCase() === activeAdventureCategory
-      );
-    });
-  }, [activeAdventureCategory, matchesRegion, matchesSeason]);
-
-  const regionStats = useMemo(() => {
-    const base = {
-      north: { tours: 0, routes: 0, adventures: 0, weekends: 0 },
-      heritage: { tours: 0, routes: 0, adventures: 0, weekends: 0 },
-      coast: { tours: 0, routes: 0, adventures: 0, weekends: 0 },
-      desert: { tours: 0, routes: 0, adventures: 0, weekends: 0 }
-    };
-
-    tours.forEach((tour) => {
-      if (!matchesSeason(tour)) {
-        return;
-      }
-      (tour.regions || []).forEach((region) => {
-        if (base[region]) {
-          base[region].tours += 1;
-        }
-      });
-    });
-
-    routes.forEach((route) => {
-      if (!matchesSeason(route)) {
-        return;
-      }
-      (route.regions || []).forEach((region) => {
-        if (base[region]) {
-          base[region].routes += 1;
-        }
-      });
-    });
-
-    activities.forEach((activity) => {
-      if (!matchesSeason(activity)) {
-        return;
-      }
-      (activity.regions || []).forEach((region) => {
-        if (base[region]) {
-          base[region].adventures += 1;
-        }
-      });
-    });
-
-    weekendItineraries.forEach((itinerary) => {
-      if (!matchesSeason(itinerary)) {
-        return;
-      }
-      if (base[itinerary.region]) {
-        base[itinerary.region].weekends += 1;
-      }
-    });
-
-    return base;
-  }, [matchesSeason]);
-
-  const scoreTour = useCallback(
-    (tour) => {
-      let score = 0;
-      if ((tour.startCities || []).includes(plannerCity)) {
-        score += 3;
-      }
-      if ((tour.styles || []).includes(plannerStyle)) {
-        score += 2;
-      }
-      if (activeSeason !== "any" && (tour.seasons || []).includes(activeSeason)) {
-        score += 1;
-      }
-      if (activeRegion !== "all" && (tour.regions || []).includes(activeRegion)) {
-        score += 1;
-      }
-      if (activeGroup !== "any" && (tour.groups || []).includes(activeGroup)) {
-        score += 1;
-      }
-      const dayDelta = Math.abs((tour.days || 0) - plannerDays);
-      score += Math.max(0, 3 - dayDelta / 2);
-      return score;
-    },
-    [activeGroup, activeRegion, activeSeason, plannerCity, plannerDays, plannerStyle]
-  );
-
-  const recommendedTours = useMemo(() => {
-    return [...tours]
-      .sort((a, b) => scoreTour(b) - scoreTour(a))
-      .slice(0, 3);
-  }, [scoreTour]);
-
-  const scoreWeekend = useCallback(
-    (itinerary) => {
-      let score = 0;
-      if (itinerary.city === plannerCity) {
-        score += 3;
-      }
-      if (itinerary.style === plannerStyle) {
-        score += 2;
-      }
-      if (activeSeason !== "any" && (itinerary.seasons || []).includes(activeSeason)) {
-        score += 1;
-      }
-      if (activeRegion !== "all" && itinerary.region === activeRegion) {
-        score += 1;
-      }
-      return score;
-    },
-    [activeRegion, activeSeason, plannerCity, plannerStyle]
-  );
-
-  const recommendedWeekends = useMemo(() => {
-    return [...weekendItineraries]
-      .sort((a, b) => scoreWeekend(b) - scoreWeekend(a))
-      .slice(0, 3);
-  }, [scoreWeekend]);
-
-  const activeWeekend = useMemo(() => {
-    return (
-      weekendItineraries.find((itinerary) => itinerary.id === activeWeekendId) ||
-      weekendItineraries[0]
-    );
-  }, [activeWeekendId]);
-
-  useEffect(() => {
-    const best = recommendedWeekends[0];
-    if (best && best.id !== activeWeekendId) {
-      setActiveWeekendId(best.id);
-    }
-  }, [activeWeekendId, recommendedWeekends]);
+  const activeWeekend =
+    weekendItineraries.find((itinerary) => itinerary.id === activeWeekendId) ||
+    weekendItineraries[0];
 
   const activeSlideIndex =
     ((heroIndex - 1) % HERO_LEN + HERO_LEN) % HERO_LEN;
@@ -1097,12 +809,12 @@ export default function Home() {
       <section className="about">
         <div className="about-grid">
           <div className="about-content reveal">
-            <p className="kicker">About Safargaah</p>
-            <h2>Pakistan, curated for the weekend.</h2>
+            <p className="kicker">What Safargaah offers</p>
+            <h2>Tours, weekends, and local clarity.</h2>
             <p className="about-copy">
-              Safargaah helps you plan trips across Pakistan with clear routes,
-              weekend plans, and handpicked highlights. Start with signature
-              spots, borrow a seasonal loop, and shape the pace to your time.
+              Safargaah helps you plan Pakistan with complete tours, weekend
+              itineraries, and single-day adventures. Start with signature
+              spots, then pick the pace that fits your time.
             </p>
             <div className="about-tags">
               {aboutTags.map((tag) => (
@@ -1133,318 +845,141 @@ export default function Home() {
             <p className="kicker">Complete tours</p>
             <h2>North Pakistan, heritage cities, and the coast</h2>
           </div>
-          <div className="intent-ctas">
-            <button
-              type="button"
-              className="intent-btn primary"
-              onClick={() => scrollTo("tours")}
-            >
-              Book a complete tour
-            </button>
-            <button
-              type="button"
-              className="intent-btn"
-              onClick={() => scrollTo("adventures")}
-            >
-              Pick an adventure
-            </button>
-            <button
-              type="button"
-              className="intent-btn"
-              onClick={() => scrollTo("weekend")}
-            >
-              Weekend plan
-            </button>
-          </div>
-        </div>
-
-        <div className="filters reveal">
-          <div>
-            <p className="filters-label">When to go</p>
-            <div className="pill-row" role="tablist" aria-label="Season">
-              {seasons.map((season) => (
-                <button
-                  key={season.id}
-                  type="button"
-                  className={`pill ${activeSeason === season.id ? "active" : ""}`}
-                  onClick={() => setActiveSeason(season.id)}
-                  role="tab"
-                  aria-selected={activeSeason === season.id}
-                >
-                  {season.label}
-                </button>
-              ))}
-            </div>
-            <p className="filters-hint">
-              {seasons.find((s) => s.id === activeSeason)?.hint}
-            </p>
-          </div>
-
-          <div className="filter-fields">
-            <label className="field">
-              <span>Region</span>
-              <select
-                value={activeRegion}
-                onChange={(event) => setActiveRegion(event.target.value)}
+          <div className="tours-actions">
+            <div className="carousel-controls">
+              <button
+                type="button"
+                className="carousel-btn"
+                onClick={() => toursApi?.scrollPrev()}
+                aria-label="Previous tours"
               >
-                {regions.map((region) => (
-                  <option key={region.id} value={region.id}>
-                    {region.label}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className="field">
-              <span>Group</span>
-              <select
-                value={activeGroup}
-                onChange={(event) => setActiveGroup(event.target.value)}
+                {"\u2190"}
+              </button>
+              <button
+                type="button"
+                className="carousel-btn"
+                onClick={() => toursApi?.scrollNext()}
+                aria-label="Next tours"
               >
-                {groupTypes.map((group) => (
-                  <option key={group.id} value={group.id}>
-                    {group.label}
-                  </option>
+                {"\u2192"}
+              </button>
+            </div>
+            <Link href="/#tours" className="intent-btn primary">
+              Show all packages
+            </Link>
+          </div>
+        </div>
+
+        <Carousel
+          className="tours-carousel reveal"
+          options={{ loop: true, align: "start" }}
+          onApi={setToursApi}
+        >
+          {tours.map((tour) => (
+            <article key={tour.id} className="tour-card">
+              <div className="tour-meta">
+                <span>{tour.duration}</span>
+                <span>{tour.season}</span>
+              </div>
+              <h3>{tour.title}</h3>
+              <p>{tour.summary}</p>
+              <div className="tour-highlights">
+                {tour.highlights.map((item) => (
+                  <span key={item}>{item}</span>
                 ))}
-              </select>
-            </label>
-          </div>
-        </div>
-
-        <div className="planner reveal" aria-label="Quick planner">
-          <label className="field">
-            <span>Start from</span>
-            <select
-              value={plannerCity}
-              onChange={(event) => setPlannerCity(event.target.value)}
-            >
-              {originCities.map((city) => (
-                <option key={city} value={city}>
-                  {city}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="field">
-            <span>Days</span>
-            <select
-              value={plannerDays}
-              onChange={(event) => setPlannerDays(Number(event.target.value))}
-            >
-              {[2, 3, 5, 6, 7, 8, 10, 12].map((days) => (
-                <option key={days} value={days}>
-                  {days}
-                </option>
-              ))}
-            </select>
-          </label>
-          <div className="style-row" aria-label="Trip style">
-            <span className="style-label">Style</span>
-            <div className="pill-row">
-              {tripStyles.map((style) => (
-                <button
-                  key={style.id}
-                  type="button"
-                  className={`pill ${plannerStyle === style.id ? "active" : ""}`}
-                  onClick={() => setPlannerStyle(style.id)}
-                >
-                  {style.label}
-                </button>
-              ))}
-            </div>
-          </div>
-          <button
-            type="button"
-            className="planner-btn"
-            onClick={() => scrollTo("picks")}
-          >
-            Show picks
-          </button>
-        </div>
-
-        <div className="picks" id="picks">
-          <div className="picks-grid">
-            <div>
-              <div className="carousel-head reveal">
-                <div>
-                  <p className="mini">Browse</p>
-                  <h3>Tour packages</h3>
-                </div>
-                <div className="carousel-controls">
-                  <button
-                    type="button"
-                    className="carousel-btn"
-                    onClick={() => toursApi?.scrollPrev()}
-                    aria-label="Previous tours"
-                  >
-                    {"\u2190"}
-                  </button>
-                  <button
-                    type="button"
-                    className="carousel-btn"
-                    onClick={() => toursApi?.scrollNext()}
-                    aria-label="Next tours"
-                  >
-                    {"\u2192"}
-                  </button>
-                </div>
               </div>
-
-              {filteredTours.length === 0 ? (
-                <div className="empty-note reveal">
-                  No tours match these filters. Try a different season or region.
-                </div>
-              ) : (
-                <Carousel
-                  className="tours-carousel reveal"
-                  options={{ loop: true, align: "start" }}
-                  onApi={setToursApi}
-                >
-                  {filteredTours.map((tour) => (
-                    <article key={tour.id} className="tour-card">
-                      <div className="tour-meta">
-                        <span>{tour.duration}</span>
-                        <span>{tour.season}</span>
-                      </div>
-                      <h3>{tour.title}</h3>
-                      <p>{tour.summary}</p>
-                      <div className="tour-highlights">
-                        {tour.highlights.map((item) => (
-                          <span key={item}>{item}</span>
-                        ))}
-                      </div>
-                    </article>
-                  ))}
-                </Carousel>
-              )}
-            </div>
-
-            <aside className="picks-side reveal">
-              <div className="pick-card">
-                <p className="mini">Recommended</p>
-                <h3>Top tours for you</h3>
-                <div className="pick-list">
-                  {recommendedTours.map((tour) => (
-                    <button
-                      key={tour.id}
-                      type="button"
-                      className="pick-item"
-                      onClick={() => scrollTo("tours")}
-                    >
-                      <span className="pick-title">{tour.title}</span>
-                      <span className="pick-meta">
-                        {tour.duration} • {tour.season}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="pick-card">
-                <p className="mini">Weekend</p>
-                <h3>Fast plans to borrow</h3>
-                <div className="pick-list">
-                  {recommendedWeekends.map((itinerary) => (
-                    <button
-                      key={itinerary.id}
-                      type="button"
-                      className="pick-item"
-                      onClick={() => {
-                        setActiveWeekendId(itinerary.id);
-                        scrollTo("weekend");
-                      }}
-                    >
-                      <span className="pick-title">{itinerary.title}</span>
-                      <span className="pick-meta">
-                        From {itinerary.city} • {itinerary.region}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </aside>
-          </div>
-        </div>
+            </article>
+          ))}
+        </Carousel>
       </section>
 
-      <section className="adventures" id="adventures">
-        <div className="adventures-head reveal">
-          <div>
-            <p className="kicker">Adventures</p>
-            <h2>Single experiences for weekends and add-ons</h2>
-          </div>
-          <div className="intent-ctas">
-            <button
-              type="button"
-              className="intent-btn primary"
-              onClick={() => scrollTo("adventures")}
-            >
-              Explore adventures
-            </button>
-            <button
-              type="button"
-              className="intent-btn"
-              onClick={() => scrollTo("tours")}
-            >
-              Complete tours
-            </button>
-            <button
-              type="button"
-              className="intent-btn"
-              onClick={() => scrollTo("weekend")}
-            >
-              Weekend plans
-            </button>
-          </div>
+      <section className="weekend" id="weekend">
+        <div className="weekend-intent-head reveal">
+          <p className="kicker">Weekend freedom</p>
+          <h2>Only free on weekends? Pick an adventure or follow a plan.</h2>
+          <p className="weekend-sub">
+            Single experiences work for a one-day escape, and weekend plans give
+            you a full two-day loop.
+          </p>
         </div>
 
-        <div className="adventures-filters reveal">
-          <div>
-            <p className="filters-label">Category</p>
-            <div className="pill-row" role="tablist" aria-label="Adventure category">
-              {adventureCategories.map((category) => (
-                <button
-                  key={category.id}
-                  type="button"
-                  className={`pill ${
-                    activeAdventureCategory === category.id ? "active" : ""
-                  }`}
-                  onClick={() => setActiveAdventureCategory(category.id)}
-                  role="tab"
-                  aria-selected={activeAdventureCategory === category.id}
+        <div className="weekend-intent-grid">
+          <div className="weekend-intent-card reveal">
+            <div className="weekend-subhead">
+              <p className="kicker">Single experiences</p>
+              <h3>Quick adventures you can do in a day</h3>
+            </div>
+            <div className="adventures-grid">
+              {activities.map((activity, index) => (
+                <article
+                  key={activity.id}
+                  className={`activity-card reveal delay-${(index % 3) + 1}`}
                 >
-                  {category.label}
-                </button>
+                  <div className="activity-tag">
+                    {activity.category} • {activity.tag}
+                  </div>
+                  <h3>{activity.title}</h3>
+                  <p>{activity.text}</p>
+                </article>
               ))}
             </div>
           </div>
-          <div className="adventures-note">
-            Filtered by: {activeSeason === "any" ? "any season" : activeSeason},{" "}
-            {activeRegion === "all" ? "all regions" : activeRegion}.
-          </div>
-        </div>
 
-        <div className="adventures-grid">
-          {(filteredActivities.length ? filteredActivities : activities).map(
-            (activity, index) => (
-              <article
-                key={activity.id}
-                className={`activity-card reveal delay-${(index % 3) + 1}`}
-              >
-                <div className="activity-tag">
-                  {activity.category} • {activity.tag}
-                </div>
-                <h3>{activity.title}</h3>
-                <p>{activity.text}</p>
-              </article>
-            )
-          )}
+          <div className="weekend-intent-card reveal">
+            <div className="weekend-plan-head">
+              <div>
+                <p className="kicker">Weekend plans</p>
+                <h3>{activeWeekend.title}</h3>
+                <p className="weekend-meta">Start from {activeWeekend.city}</p>
+              </div>
+              <label className="field">
+                <span>Itinerary</span>
+                <select
+                  value={activeWeekendId}
+                  onChange={(event) => setActiveWeekendId(event.target.value)}
+                >
+                  {weekendItineraries.map((itinerary) => (
+                    <option key={itinerary.id} value={itinerary.id}>
+                      {itinerary.title}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+
+            <div className="weekend-grid">
+              {activeWeekend.days.map((plan, index) => (
+                <article
+                  key={plan.day}
+                  className={`day-card reveal delay-${index + 1}`}
+                >
+                  <div className="day-top">
+                    <span className="day-label">{plan.day}</span>
+                    <span className="day-theme">{plan.theme}</span>
+                  </div>
+                  <h3>{plan.title}</h3>
+                  <ul className="day-list">
+                    {plan.items.map((item) => (
+                      <li key={item.time} className="day-slot">
+                        <span className="day-time">{item.time}</span>
+                        <div>
+                          <p className="day-what">{item.what}</p>
+                          <p className="day-detail">{item.detail}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="favorites">
         <div className="favorites-head reveal">
           <p className="kicker">Destinations</p>
-          <h2>Signature spots to start with</h2>
+          <h2>Signature spots of Pakistan</h2>
         </div>
 
         <div className="card-grid">
@@ -1472,152 +1007,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="regions" id="regions">
-        <div className="regions-head reveal">
-          <p className="kicker">Regions</p>
-          <h2>Plan by geography</h2>
-          <p className="regions-sub">
-            Pick a region and Safargaah will filter tours, adventures, routes,
-            and weekend plans for that area.
-          </p>
-        </div>
-
-        <div className="regions-grid">
-          {regions
-            .filter((region) => region.id !== "all")
-            .map((region, index) => (
-              <button
-                key={region.id}
-                type="button"
-                className={`region-card reveal delay-${index + 1} ${
-                  activeRegion === region.id ? "active" : ""
-                }`}
-                onClick={() => {
-                  setActiveRegion(region.id);
-                  scrollTo("tours");
-                }}
-              >
-                <div className="region-top">
-                  <span className="region-name">{region.label}</span>
-                  <span className="region-season">
-                    {activeSeason === "any" ? "Any season" : activeSeason}
-                  </span>
-                </div>
-                <p className="region-copy">
-                  {region.id === "north"
-                    ? "Glaciers, lakes, and high valleys."
-                    : null}
-                  {region.id === "heritage"
-                    ? "Old streets, forts, museums, and food."
-                    : null}
-                  {region.id === "coast"
-                    ? "Sea cliffs, beaches, and coastal drives."
-                    : null}
-                  {region.id === "desert"
-                    ? "Dunes, forts, and starlit camps."
-                    : null}
-                </p>
-                <div className="region-stats">
-                  <span>{regionStats[region.id].tours} tours</span>
-                  <span>{regionStats[region.id].weekends} weekends</span>
-                  <span>{regionStats[region.id].adventures} adventures</span>
-                </div>
-              </button>
-            ))}
-        </div>
-      </section>
-
-      <section className="weekend" id="weekend">
-        <div className="weekend-head reveal">
-          <p className="kicker">Weekend plans</p>
-          <h2>Saturday + Sunday, mapped out</h2>
-          <p className="weekend-sub">
-            Two days, one clean itinerary. Pick your start city and borrow a
-            plan that fits the season.
-          </p>
-          <div className="weekend-controls">
-            <label className="field">
-              <span>From</span>
-              <select
-                value={plannerCity}
-                onChange={(event) => setPlannerCity(event.target.value)}
-              >
-                {originCities.map((city) => (
-                  <option key={city} value={city}>
-                    {city}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className="field">
-              <span>Itinerary</span>
-              <select
-                value={activeWeekendId}
-                onChange={(event) => setActiveWeekendId(event.target.value)}
-              >
-                {weekendItineraries.map((itinerary) => (
-                  <option key={itinerary.id} value={itinerary.id}>
-                    {itinerary.title}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
-        </div>
-
-        <div className="weekend-grid">
-          {activeWeekend.days.map((plan, index) => (
-            <article
-              key={plan.day}
-              className={`day-card reveal delay-${index + 1}`}
-            >
-              <div className="day-top">
-                <span className="day-label">{plan.day}</span>
-                <span className="day-theme">{plan.theme}</span>
-              </div>
-              <h3>{plan.title}</h3>
-              <ul className="day-list">
-                {plan.items.map((item) => (
-                  <li key={item.time} className="day-slot">
-                    <span className="day-time">{item.time}</span>
-                    <div>
-                      <p className="day-what">{item.what}</p>
-                      <p className="day-detail">{item.detail}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-
-        <div className="weekend-suggest reveal">
-          <p className="mini">Suggested weekend plans</p>
-          <div className="pick-list compact">
-            {recommendedWeekends.map((itinerary) => (
-              <button
-                key={itinerary.id}
-                type="button"
-                className={`pick-item ${
-                  itinerary.id === activeWeekendId ? "active" : ""
-                }`}
-                onClick={() => setActiveWeekendId(itinerary.id)}
-              >
-                <span className="pick-title">{itinerary.title}</span>
-                <span className="pick-meta">
-                  From {itinerary.city} • {itinerary.region}
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="routes">
         <div className="routes-head reveal">
           <div>
-            <p className="kicker">Signature journeys</p>
-            <h2>Seasonal routes across Pakistan</h2>
+            <p className="kicker">Seasonal routes</p>
+            <h2>Routes across Pakistan by season</h2>
           </div>
           <div className="carousel-controls">
             <button
@@ -1644,7 +1038,7 @@ export default function Home() {
           options={{ loop: true, align: "start" }}
           onApi={setRoutesApi}
         >
-          {(filteredRoutes.length ? filteredRoutes : routes).map((route) => (
+          {routes.map((route) => (
             <article
               key={route.title}
               className="route-card"
@@ -1671,65 +1065,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="realities" id="realities">
-        <div className="realities-head reveal">
-          <p className="kicker">Travel realities</p>
-          <h2>Plan like a local</h2>
-        </div>
-        <div className="realities-grid">
-          {travelRealities.map((item, index) => (
-            <article
-              key={item.title}
-              className={`reality-card reveal delay-${index + 1}`}
-            >
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className="moments" id="moments">
         <div className="moments-head reveal">
-          <p className="kicker">Seasonal moments</p>
+          <p className="kicker">When to go</p>
           <h2>When Pakistan looks its best</h2>
-          <div className="pill-row" role="tablist" aria-label="Season">
-            {seasons.map((season) => (
-              <button
-                key={season.id}
-                type="button"
-                className={`pill ${activeSeason === season.id ? "active" : ""}`}
-                onClick={() => setActiveSeason(season.id)}
-                role="tab"
-                aria-selected={activeSeason === season.id}
-              >
-                {season.label}
-              </button>
-            ))}
-          </div>
         </div>
 
         <div className="moments-grid">
-          {travelMoments.map((moment, index) => {
-            const isMatch =
-              activeSeason === "any" ||
-              moment.season.toLowerCase() === activeSeason;
-            return (
-              <article
-                key={moment.title}
-                className={`moment-card reveal delay-${index + 1} ${
-                  isMatch ? "" : "dim"
-                }`}
-              >
-                <div className="moment-top">
-                  <span className="moment-season">{moment.season}</span>
-                  <span className="moment-when">{moment.when}</span>
-                </div>
-                <h3>{moment.title}</h3>
-                <p>{moment.where}</p>
-              </article>
-            );
-          })}
+          {travelMoments.map((moment, index) => (
+            <article
+              key={moment.title}
+              className={`moment-card reveal delay-${index + 1}`}
+            >
+              <div className="moment-top">
+                <span className="moment-season">{moment.season}</span>
+                <span className="moment-when">{moment.when}</span>
+              </div>
+              <h3>{moment.title}</h3>
+              <p>{moment.where}</p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -1770,41 +1125,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="blog">
-        <div className="blog-head reveal">
-          <p className="kicker">Journal</p>
-          <h2>Stories and quick travel notes</h2>
-        </div>
-
-        <div className="blog-grid">
-          {blogArticles.map((article, index) => (
-            <article
-              key={article.title}
-              className={`blog-card reveal delay-${index + 1}`}
-            >
-              <div
-                className="blog-image"
-                style={{
-                  backgroundImage: `linear-gradient(180deg, rgba(6,8,7,0.15) 0%, rgba(6,8,7,0.75) 100%), url(${article.image})`
-                }}
-              />
-              <div className="blog-body">
-                <div className="blog-meta">
-                  <span>{article.date}</span>
-                  <span>{article.tag}</span>
-                </div>
-                <h3>{article.title}</h3>
-                <p>{article.excerpt}</p>
-                <span className="blog-link">
-                  Read story
-                  <span aria-hidden="true">{"\u2192"}</span>
-                </span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section
         className="experience"
         style={{
@@ -1828,13 +1148,6 @@ export default function Home() {
               onClick={() => scrollTo("tours")}
             >
               Book a complete tour
-            </button>
-            <button
-              type="button"
-              className="intent-btn"
-              onClick={() => scrollTo("adventures")}
-            >
-              Pick an adventure
             </button>
             <button
               type="button"
@@ -1871,7 +1184,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
       <footer className="footer">
         <div className="footer-brand">
           Copyright 2026 Safargaah. All rights reserved.
@@ -1908,3 +1220,4 @@ export default function Home() {
     </main>
   );
 }
+
