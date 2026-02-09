@@ -1048,6 +1048,11 @@ export default function Home() {
             Single experiences work for a one-day escape, and weekend plans give
             you a full two-day loop.
           </p>
+          <div className="weekend-format" aria-hidden="true">
+            <span className="format-chip single">Single day</span>
+            <span className="format-chip sat">Saturday</span>
+            <span className="format-chip sun">Sunday</span>
+          </div>
         </div>
 
         <div className="weekend-intent-grid">
@@ -1060,7 +1065,9 @@ export default function Home() {
               {activities.map((activity, index) => (
                 <article
                   key={activity.id}
-                  className={`activity-card reveal delay-${(index % 3) + 1}`}
+                  className={`activity-card weekend-activity cat-${activity.category.toLowerCase()} reveal delay-${
+                    (index % 3) + 1
+                  }`}
                 >
                   <div className="activity-tag">
                     {activity.category} • {activity.tag}
@@ -1098,7 +1105,9 @@ export default function Home() {
               {activeWeekend.days.map((plan, index) => (
                 <article
                   key={plan.day}
-                  className={`day-card reveal delay-${index + 1}`}
+                  className={`day-card day-${plan.day.toLowerCase()} reveal delay-${
+                    index + 1
+                  }`}
                 >
                   <div className="day-top">
                     <span className="day-label">{plan.day}</span>
