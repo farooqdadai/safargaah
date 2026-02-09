@@ -831,6 +831,104 @@ section {
   padding: 0 6vw;
 }
 
+.plan {
+  position: relative;
+  padding: 0 6vw;
+}
+
+.plan-head {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.plan-sub {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 760px;
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 1.6rem;
+  align-items: start;
+}
+
+.plan-block {
+  position: relative;
+  border-radius: 20px;
+  padding: 1.6rem;
+  background: linear-gradient(160deg, rgba(10, 15, 13, 0.92), rgba(6, 9, 8, 0.86));
+  border: 1px solid rgba(244, 241, 234, 0.08);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+}
+
+.plan-block::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(126, 181, 156, 0.16), transparent 55%),
+    radial-gradient(circle at 92% 12%, rgba(226, 92, 46, 0.12), transparent 60%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.plan-block > * {
+  position: relative;
+  z-index: 1;
+}
+
+.plan-block-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.plan-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: var(--accent-2);
+  font-size: 0.72rem;
+}
+
+.plan-block h3 {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 1.35rem;
+  margin-top: 0.35rem;
+}
+
+.plan-carousel .embla__container {
+  gap: 1.2rem;
+}
+
+.adventure-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem;
+}
+
+.plan .activity-card {
+  padding: 1.1rem;
+}
+
+.plan .activity-card p {
+  font-size: 0.9rem;
+}
+
+.plan .activity-tag {
+  margin-bottom: 0.8rem;
+}
+
 .tours-head {
   display: flex;
   align-items: flex-end;
@@ -1535,6 +1633,14 @@ section {
     align-items: flex-start;
   }
 
+  .plan-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .adventure-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .weekend-grid {
     grid-template-columns: 1fr;
   }
@@ -1602,6 +1708,10 @@ section {
   }
 
   .hero-microcopy {
+    grid-template-columns: 1fr;
+  }
+
+  .adventure-grid {
     grid-template-columns: 1fr;
   }
 

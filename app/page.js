@@ -604,6 +604,90 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="plan">
+        <div className="plan-head reveal">
+          <p className="kicker">Plan your trip</p>
+          <h2>Tours for the journey, adventures for the thrill</h2>
+          <p className="plan-sub">
+            Most travelers do not visit one valley only. Pick a complete tour,
+            then add adventure experiences based on your vibe and season.
+          </p>
+        </div>
+
+        <div className="plan-grid">
+          <div className="plan-block">
+            <div className="plan-block-head">
+              <div>
+                <p className="plan-kicker">Tours</p>
+                <h3>Complete itineraries</h3>
+              </div>
+              <div className="carousel-controls">
+                <button
+                  type="button"
+                  className="carousel-btn"
+                  onClick={() => toursApi?.scrollPrev()}
+                  aria-label="Previous tours"
+                >
+                  {"\u2190"}
+                </button>
+                <button
+                  type="button"
+                  className="carousel-btn"
+                  onClick={() => toursApi?.scrollNext()}
+                  aria-label="Next tours"
+                >
+                  {"\u2192"}
+                </button>
+              </div>
+            </div>
+
+            <Carousel
+              className="tours-carousel plan-carousel reveal"
+              options={{ loop: true, align: "start" }}
+              onApi={setToursApi}
+            >
+              {tours.map((tour) => (
+                <article key={tour.title} className="tour-card">
+                  <div className="tour-meta">
+                    <span>{tour.duration}</span>
+                    <span>{tour.season}</span>
+                  </div>
+                  <h3>{tour.title}</h3>
+                  <p>{tour.summary}</p>
+                  <div className="tour-highlights">
+                    {tour.highlights.map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </Carousel>
+          </div>
+
+          <div className="plan-block">
+            <div className="plan-block-head">
+              <div>
+                <p className="plan-kicker">Adventures</p>
+                <h3>Pick your vibe</h3>
+              </div>
+            </div>
+
+            <div className="adventure-grid">
+              {activities.slice(0, 6).map((activity, index) => (
+                <article
+                  key={activity.title}
+                  className={`activity-card reveal delay-${(index % 3) + 1}`}
+                >
+                  <div className="activity-tag">{activity.tag}</div>
+                  <h3>{activity.title}</h3>
+                  <p>{activity.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="favorites">
         <div className="favorites-head reveal">
           <p className="kicker">Destinations</p>
@@ -685,7 +769,7 @@ export default function Home() {
               onClick={() => routesApi?.scrollPrev()}
               aria-label="Previous routes"
             >
-              ←
+              {"\u2190"}
             </button>
             <button
               type="button"
@@ -693,7 +777,7 @@ export default function Home() {
               onClick={() => routesApi?.scrollNext()}
               aria-label="Next routes"
             >
-              →
+              {"\u2192"}
             </button>
           </div>
         </div>
@@ -730,80 +814,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="tours">
-        <div className="tours-head reveal">
-          <div>
-            <p className="kicker">Tours</p>
-            <h2>Packages made for every traveler</h2>
-          </div>
-          <div className="carousel-controls">
-            <button
-              type="button"
-              className="carousel-btn"
-              onClick={() => toursApi?.scrollPrev()}
-              aria-label="Previous tours"
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              className="carousel-btn"
-              onClick={() => toursApi?.scrollNext()}
-              aria-label="Next tours"
-            >
-              →
-            </button>
-          </div>
-        </div>
-
-        <Carousel
-          className="tours-carousel reveal"
-          options={{ loop: true, align: "start" }}
-          onApi={setToursApi}
-        >
-          {tours.map((tour) => (
-            <article key={tour.title} className="tour-card">
-              <div className="tour-meta">
-                <span>{tour.duration}</span>
-                <span>{tour.season}</span>
-              </div>
-              <h3>{tour.title}</h3>
-              <p>{tour.summary}</p>
-              <div className="tour-highlights">
-                {tour.highlights.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </Carousel>
-      </section>
-
-      <section
-        className="activities"
-        style={{
-          backgroundImage: `linear-gradient(180deg, rgba(5,7,6,0.82) 0%, rgba(5,7,6,0.94) 100%), url(${heroImage})`
-        }}
-      >
-        <div className="activities-head reveal">
-          <p className="kicker">Experiences</p>
-          <h2>Adventure, culture, and add-ons</h2>
-        </div>
-
-        <div className="activities-grid">
-          {activities.map((activity, index) => (
-            <article
-              key={activity.title}
-              className={`activity-card reveal delay-${index + 1}`}
-            >
-              <div className="activity-tag">{activity.tag}</div>
-              <h3>{activity.title}</h3>
-              <p>{activity.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className="blog">
         <div className="blog-head reveal">
           <p className="kicker">Journal</p>
@@ -831,7 +841,7 @@ export default function Home() {
                 <p>{article.excerpt}</p>
                 <span className="blog-link">
                   Read story
-                  <span aria-hidden="true">→</span>
+                  <span aria-hidden="true">{"\u2192"}</span>
                 </span>
               </div>
             </article>
