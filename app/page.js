@@ -1055,8 +1055,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="weekend-intent-grid">
-          <div className="weekend-intent-card reveal">
+        <div className="weekend-stack">
+          <div className="weekend-intent-card weekend-intent-card--single reveal">
             <div className="weekend-subhead">
               <p className="kicker">Single experiences</p>
               <h3>Quick adventures you can do in a day</h3>
@@ -1079,7 +1079,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="weekend-intent-card reveal">
+          <div className="weekend-divider" aria-hidden="true" />
+
+          <div className="weekend-intent-card weekend-intent-card--plan reveal">
             <div className="weekend-plan-head">
               <div>
                 <p className="kicker">Weekend plans</p>
