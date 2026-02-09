@@ -22,7 +22,7 @@ body {
 }
 
 html {
-  font-size: 112.5%;
+  font-size: 106.25%;
 }
 
 body {
@@ -317,7 +317,7 @@ section {
 
 .hero-title h1 {
   font-family: var(--font-display), "Impact", sans-serif;
-  font-size: clamp(3.4rem, 7.5vw, 7.6rem);
+  font-size: clamp(3.1rem, 7vw, 7rem);
   text-transform: uppercase;
   letter-spacing: 0.3rem;
   line-height: 0.95;
@@ -328,7 +328,7 @@ section {
 }
 
 .hero-title h1 span:first-child {
-  font-size: clamp(2.6rem, 5vw, 5.2rem);
+  font-size: clamp(2.35rem, 4.7vw, 4.8rem);
 }
 
 .hero-subline {
@@ -468,7 +468,7 @@ section {
 
 .favorites-head h2 {
   font-family: var(--font-display), "Impact", sans-serif;
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(1.85rem, 3.7vw, 3rem);
   text-transform: uppercase;
   letter-spacing: 0.2rem;
 }
@@ -590,7 +590,7 @@ section {
 
 .about-content h2 {
   font-family: var(--font-display), "Impact", sans-serif;
-  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+  font-size: clamp(2.15rem, 4.2vw, 3.35rem);
   text-transform: uppercase;
   margin: 0.9rem 0 1.2rem;
   text-shadow: 0 14px 34px rgba(0, 0, 0, 0.7);
@@ -680,7 +680,7 @@ section {
 
 .routes-head h2 {
   font-family: var(--font-display), "Impact", sans-serif;
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(2rem, 3.7vw, 3.15rem);
   text-transform: uppercase;
   letter-spacing: 0.2rem;
 }
@@ -1438,7 +1438,7 @@ section {
 
 .tours-head h2 {
   font-family: var(--font-display), "Impact", sans-serif;
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(2rem, 3.7vw, 3.15rem);
   text-transform: uppercase;
   letter-spacing: 0.2rem;
 }
@@ -1655,6 +1655,21 @@ section {
   margin-bottom: 2.5rem;
   position: relative;
   z-index: 1;
+}
+
+.weekend-intent-head h2 {
+  font-family: var(--font-display), "Impact", sans-serif;
+  font-size: clamp(2rem, 3.7vw, 3.15rem);
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+.moments-head h2,
+.trust-head h2 {
+  font-family: var(--font-display), "Impact", sans-serif;
+  font-size: clamp(2rem, 3.7vw, 3.15rem);
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
 }
 
 .weekend-stack {
@@ -2304,7 +2319,7 @@ section {
 
 .activities-head h2 {
   font-family: var(--font-display), "Impact", sans-serif;
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(2rem, 3.7vw, 3.15rem);
   text-transform: uppercase;
   letter-spacing: 0.2rem;
 }
@@ -2373,7 +2388,7 @@ section {
 
 .blog-head h2 {
   font-family: var(--font-display), "Impact", sans-serif;
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(2rem, 3.7vw, 3.15rem);
   text-transform: uppercase;
   letter-spacing: 0.2rem;
 }
@@ -2458,7 +2473,7 @@ section {
 
 .experience-text h2 {
   font-family: var(--font-display), "Impact", sans-serif;
-  font-size: clamp(2.6rem, 4.5vw, 4rem);
+  font-size: clamp(2.35rem, 4.2vw, 3.7rem);
   text-transform: uppercase;
   margin: 0.8rem 0 1.2rem;
 }
@@ -2850,6 +2865,15 @@ section {
 }
 
 @media (max-width: 720px) {
+  html {
+    font-size: 100%;
+  }
+
+  .kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.24rem;
+  }
+
   .hero {
     padding: 2rem 6vw 2.5rem;
     row-gap: 2rem;
@@ -2868,6 +2892,16 @@ section {
 
   .hero-title h1 {
     text-align: center;
+    font-size: clamp(2.7rem, 10.5vw, 4rem);
+    letter-spacing: 0.24rem;
+  }
+
+  .hero-title h1 span:first-child {
+    font-size: clamp(2.05rem, 8.2vw, 3rem);
+  }
+
+  .hero-subline {
+    font-size: 0.95rem;
   }
 
   .hero-center {
@@ -2954,6 +2988,33 @@ section {
 
   .about-tags {
     justify-content: flex-start;
+  }
+
+  .about-content h2 {
+    font-size: clamp(1.9rem, 7.2vw, 2.6rem);
+  }
+
+  .about-copy {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .favorites-head h2,
+  .routes-head h2,
+  .tours-head h2,
+  .weekend-intent-head h2,
+  .moments-head h2,
+  .trust-head h2 {
+    font-size: clamp(1.75rem, 7.4vw, 2.45rem);
+    letter-spacing: 0.18rem;
+  }
+
+  .weekend-sub,
+  .plan-summary,
+  .plan-seasons,
+  .experience-copy {
+    font-size: 0.95rem;
+    line-height: 1.65;
   }
 
   .footer {
