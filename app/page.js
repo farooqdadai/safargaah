@@ -1246,7 +1246,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="moments" id="moments">
+      <section className="moments-trust" id="moments">
+        <div className="moments-trust-bg" aria-hidden="true">
+          <video
+            className="moments-trust-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            src="/videos/pakistanflag.mp4"
+          />
+        </div>
+
         <div className="moments-head reveal">
           <p className="kicker">When to go</p>
           <h2>When Pakistan looks its best</h2>
@@ -1267,41 +1279,43 @@ export default function Home() {
             </article>
           ))}
         </div>
-      </section>
 
-      <section className="trust" id="trust">
-        <div className="trust-head reveal">
-          <p className="kicker">Trust</p>
-          <h2>Built for Pakistan travel</h2>
-        </div>
+        <div className="moments-trust-divider" aria-hidden="true" />
 
-        <div className="trust-grid">
-          <div className="trust-cards">
-            {trustBadges.map((badge, index) => (
-              <article
-                key={badge.title}
-                className={`trust-card reveal delay-${index + 1}`}
-              >
-                <h3>{badge.title}</h3>
-                <p>{badge.text}</p>
-              </article>
-            ))}
+        <div id="trust" className="trust-block">
+          <div className="trust-head reveal">
+            <p className="kicker">Trust</p>
+            <h2>Built for Pakistan travel</h2>
           </div>
 
-          <div className="trust-quotes">
-            {testimonials.map((quote, index) => (
-              <article
-                key={`${quote.name}-${quote.city}`}
-                className={`quote-card reveal delay-${index + 1}`}
-              >
-                <p className="quote-text">
-                  &ldquo;{quote.text}&rdquo;
-                </p>
-                <p className="quote-meta">
-                  {quote.name} • {quote.city}
-                </p>
-              </article>
-            ))}
+          <div className="trust-grid">
+            <div className="trust-cards">
+              {trustBadges.map((badge, index) => (
+                <article
+                  key={badge.title}
+                  className={`trust-card reveal delay-${index + 1}`}
+                >
+                  <h3>{badge.title}</h3>
+                  <p>{badge.text}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="trust-quotes">
+              {testimonials.map((quote, index) => (
+                <article
+                  key={`${quote.name}-${quote.city}`}
+                  className={`quote-card reveal delay-${index + 1}`}
+                >
+                  <p className="quote-text">
+                    &ldquo;{quote.text}&rdquo;
+                  </p>
+                  <p className="quote-meta">
+                    {quote.name} • {quote.city}
+                  </p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
