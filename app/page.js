@@ -38,9 +38,17 @@ const getTourImages = (highlights) => {
   return Array.from({ length: 4 }, (_, idx) => source[idx % source.length]);
 };
 
-function TourMediaCarousel({ images }) {
+function TourMediaCarousel({ images, label }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+
+  const goPrev = useCallback(() => {
+    setIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
+
+  const goNext = useCallback(() => {
+    setIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
 
   useEffect(() => {
     if (paused || images.length <= 1) {
@@ -54,12 +62,37 @@ function TourMediaCarousel({ images }) {
     return () => window.clearInterval(timer);
   }, [images.length, paused]);
 
+  useEffect(() => {
+    setIndex(0);
+  }, [images]);
+
+  const onKeyDown = (event) => {
+    if (images.length <= 1) {
+      return;
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      goPrev();
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      goNext();
+    }
+  };
+
   return (
     <div
       className="tour-media"
-      aria-hidden="true"
+      tabIndex={0}
+      role="group"
+      aria-label={label}
       onPointerEnter={() => setPaused(true)}
       onPointerLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+      onKeyDown={onKeyDown}
     >
       {images.map((image, idx) => (
         <div
@@ -68,6 +101,43 @@ function TourMediaCarousel({ images }) {
           style={{ backgroundImage: `url(${image})` }}
         />
       ))}
+
+      {images.length > 1 && (
+        <>
+          <button
+            type="button"
+            className="tour-media-btn prev"
+            onClick={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              goPrev();
+            }}
+            aria-label="Previous image"
+          >
+            {"\u2190"}
+          </button>
+          <button
+            type="button"
+            className="tour-media-btn next"
+            onClick={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              goNext();
+            }}
+            aria-label="Next image"
+          >
+            {"\u2192"}
+          </button>
+          <div className="tour-media-dots" aria-hidden="true">
+            {images.map((_, idx) => (
+              <span
+                key={`dot-${idx}`}
+                className={`tour-dot ${idx === index ? "active" : ""}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -935,17 +1005,22 @@ export default function Home() {
             const images = getTourImages(tour.highlights);
             return (
               <article key={tour.id} className="tour-card">
-                <TourMediaCarousel images={images} />
-                <div className="tour-meta">
-                  <span>{tour.duration}</span>
-                  <span>{tour.season}</span>
-                </div>
-                <h3>{tour.title}</h3>
-                <p>{tour.summary}</p>
-                <div className="tour-highlights">
-                  {tour.highlights.map((item) => (
-                    <span key={item}>{item}</span>
-                  ))}
+                <TourMediaCarousel
+                  images={images}
+                  label={`${tour.title} photo preview`}
+                />
+                <div className="tour-body">
+                  <div className="tour-meta">
+                    <span>{tour.duration}</span>
+                    <span>{tour.season}</span>
+                  </div>
+                  <h3>{tour.title}</h3>
+                  <p>{tour.summary}</p>
+                  <div className="tour-highlights">
+                    {tour.highlights.map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
+                  </div>
                 </div>
               </article>
             );
