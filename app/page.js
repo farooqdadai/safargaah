@@ -952,41 +952,43 @@ export default function Home() {
             <p className="hero-subline">{activeSlide.subline}</p>
           </div>
 
-          <div className="hero-steps reveal delay-2">
-            {heroSlides.map((slide, index) => (
+          <div className="hero-controls reveal delay-2">
+            <div className="hero-arrows" aria-label="Hero navigation">
               <button
-                key={slide.id}
                 type="button"
-                className={`step-btn ${
-                  index === activeSlideIndex ? "active" : ""
-                }`}
-                onClick={() => goTo(index)}
-                aria-label={`Go to slide ${slide.id}`}
+                className="hero-arrow prev"
+                onClick={goPrev}
+                aria-label="Previous hero slide"
               >
-                <span className="step-number">{slide.id}</span>
-                <span className="step-line" />
+                {"\u2190"}
               </button>
-            ))}
-          </div>
-        </div>
+              <button
+                type="button"
+                className="hero-arrow next"
+                onClick={goNext}
+                aria-label="Next hero slide"
+              >
+                {"\u2192"}
+              </button>
+            </div>
 
-        <div className="hero-arrows" aria-label="Hero navigation">
-          <button
-            type="button"
-            className="hero-arrow prev"
-            onClick={goPrev}
-            aria-label="Previous hero slide"
-          >
-            {"\u2190"}
-          </button>
-          <button
-            type="button"
-            className="hero-arrow next"
-            onClick={goNext}
-            aria-label="Next hero slide"
-          >
-            {"\u2192"}
-          </button>
+            <div className="hero-steps">
+              {heroSlides.map((slide, index) => (
+                <button
+                  key={slide.id}
+                  type="button"
+                  className={`step-btn ${
+                    index === activeSlideIndex ? "active" : ""
+                  }`}
+                  onClick={() => goTo(index)}
+                  aria-label={`Go to slide ${slide.id}`}
+                >
+                  <span className="step-number">{slide.id}</span>
+                  <span className="step-line" />
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="hero-bottom reveal delay-3">
