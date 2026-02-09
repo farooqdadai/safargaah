@@ -899,8 +899,6 @@ export default function Home() {
 
         <SiteNav />
 
-        <div className="nav-divider" />
-
         <div className="hero-center" key={activeSlide.id}>
           <div className="hero-title reveal delay-1">
             <h1>
@@ -1095,16 +1093,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="weekend-divider" aria-hidden="true" />
-
           <div className="weekend-intent-card weekend-intent-card--plan reveal">
             <div className="weekend-subhead">
               <p className="kicker">Two-day plans</p>
               <h3>Ready-made loops with time built in</h3>
-              <p className="weekend-meta">
-                Upcoming dates, timing, and booking will move to a dedicated
-                page soon.
-              </p>
             </div>
 
             <div className="weekend-plan-cards">
@@ -1145,9 +1137,7 @@ export default function Home() {
                       <p className="plan-seasons">
                         Best: {formatSeasons(itinerary.seasons)}
                       </p>
-                      <button type="button" className="intent-btn" disabled>
-                        Details soon
-                      </button>
+                      <p className="plan-soon">Details coming soon.</p>
                     </div>
                   </article>
                 );
@@ -1240,10 +1230,6 @@ export default function Home() {
           ))}
         </Carousel>
 
-        <div className="routes-footer">
-          <span className="routes-note">Curated itineraries for every season</span>
-          <span className="routes-pulse" aria-hidden="true" />
-        </div>
       </section>
 
       <section className="moments-trust" id="moments">
@@ -1279,8 +1265,6 @@ export default function Home() {
             </article>
           ))}
         </div>
-
-        <div className="moments-trust-divider" aria-hidden="true" />
 
         <div id="trust" className="trust-block">
           <div className="trust-head reveal">

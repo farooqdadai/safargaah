@@ -547,8 +547,6 @@ section {
   position: relative;
   padding: 2.4rem 6vw;
   overflow: hidden;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
 }
 
 .about-bg {
@@ -881,8 +879,6 @@ section {
     radial-gradient(circle at 12% 18%, rgba(126, 181, 156, 0.16), transparent 55%),
     radial-gradient(circle at 88% 12%, rgba(226, 92, 46, 0.12), transparent 60%),
     linear-gradient(180deg, rgba(5, 7, 6, 0.94) 0%, rgba(5, 7, 6, 0.98) 100%);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
 }
 
 .tours-actions {
@@ -1619,8 +1615,6 @@ section {
   position: relative;
   padding: 3.75rem 6vw;
   background: rgba(5, 7, 6, 0.98);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
 }
 
 .weekend-bg {
@@ -1857,6 +1851,13 @@ section {
   letter-spacing: 0.06rem;
   font-size: 0.85rem;
   margin-bottom: 1rem;
+}
+
+.plan-soon {
+  text-transform: uppercase;
+  letter-spacing: 0.18rem;
+  font-size: 0.68rem;
+  color: rgba(244, 241, 234, 0.72);
 }
 
 .intent-btn[disabled] {
@@ -2127,8 +2128,6 @@ section {
 .moments-trust {
   position: relative;
   padding: 3.25rem 6vw;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
   overflow: hidden;
 }
 
@@ -2170,6 +2169,7 @@ section {
 
 .trust-block {
   position: relative;
+  margin-top: 3rem;
 }
 
 .moments-head {
@@ -2468,7 +2468,6 @@ section {
   padding: 4rem 6vw;
   background-size: cover;
   background-position: center;
-  border-bottom: 1px solid var(--line);
 }
 
 .experience-text h2 {
@@ -3015,6 +3014,10 @@ section {
   .experience-copy {
     font-size: 0.95rem;
     line-height: 1.65;
+  }
+
+  .trust-block {
+    margin-top: 2.25rem;
   }
 
   .footer {

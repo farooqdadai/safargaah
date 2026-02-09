@@ -334,8 +334,6 @@ export default function Home() {
 
         <SiteNav activePlace="swat" />
 
-        <div className="nav-divider" />
-
         <div className="hero-center" key={activeSlide.id}>
           <div className="hero-title reveal delay-1">
             <h1>

@@ -24,8 +24,6 @@ export default function PlacePage({ params }) {
       >
         <SiteNav activePlace={params.slug} />
 
-        <div className="nav-divider" />
-
         <div className="hero-center">
           <div className="hero-title reveal delay-1">
             <h1>
