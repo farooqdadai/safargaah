@@ -1051,6 +1051,17 @@ export default function Home() {
       </section>
 
       <section className="weekend" id="weekend">
+        <div className="weekend-bg" aria-hidden="true">
+          <video
+            className="weekend-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            src="/videos/bgeffect.mp4"
+          />
+        </div>
         <div className="weekend-intent-head reveal">
           <p className="kicker">Weekend freedom</p>
           <h2>Only free on weekends? Pick an adventure or follow a plan.</h2>
