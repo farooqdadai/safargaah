@@ -2080,7 +2080,7 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(5, 7, 6, 0.86);
+  background: rgba(5, 7, 6, 0.72);
 }
 
 .moments-trust-video {
@@ -2089,10 +2089,10 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.6) saturate(1.05) contrast(1.08);
+  filter: brightness(0.78) saturate(1.12) contrast(1.1);
 }
 
-.moments-trust > * {
+.moments-trust > *:not(.moments-trust-bg) {
   position: relative;
   z-index: 1;
 }
