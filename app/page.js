@@ -16,6 +16,28 @@ const fallsImage =
 const mountainImage =
   "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80";
 
+const highlightImages = {
+  Hunza: mountainImage,
+  Skardu: lakeImage,
+  Lahore: heroImage,
+  Gwadar: beachImage,
+  Passu: mountainImage,
+  Attabad: lakeImage,
+  Swat: mountainImage,
+  Dir: mountainImage,
+  Kalam: fallsImage,
+  Mingora: heroImage,
+  Miandam: mountainImage
+};
+
+const getTourImages = (highlights) => {
+  const mapped =
+    highlights?.map((name) => highlightImages[name]).filter(Boolean) ?? [];
+  const fallback = [mountainImage, lakeImage, heroImage, beachImage];
+  const source = mapped.length ? mapped : fallback;
+  return Array.from({ length: 4 }, (_, idx) => source[idx % source.length]);
+};
+
 const heroSlides = [
   {
     id: "01",
@@ -875,21 +897,35 @@ export default function Home() {
           options={{ loop: true, align: "start" }}
           onApi={setToursApi}
         >
-          {tours.map((tour) => (
-            <article key={tour.id} className="tour-card">
-              <div className="tour-meta">
-                <span>{tour.duration}</span>
-                <span>{tour.season}</span>
-              </div>
-              <h3>{tour.title}</h3>
-              <p>{tour.summary}</p>
-              <div className="tour-highlights">
-                {tour.highlights.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
-              </div>
-            </article>
-          ))}
+          {tours.map((tour) => {
+            const images = getTourImages(tour.highlights);
+            return (
+              <article key={tour.id} className="tour-card">
+                <div className="tour-media" aria-hidden="true">
+                  {images.map((image, idx) => (
+                    <div
+                      key={`${tour.id}-img-${idx}`}
+                      className="tour-thumb"
+                      style={{
+                        backgroundImage: `url(${image})`
+                      }}
+                    />
+                  ))}
+                </div>
+                <div className="tour-meta">
+                  <span>{tour.duration}</span>
+                  <span>{tour.season}</span>
+                </div>
+                <h3>{tour.title}</h3>
+                <p>{tour.summary}</p>
+                <div className="tour-highlights">
+                  {tour.highlights.map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+              </article>
+            );
+          })}
         </Carousel>
       </section>
 
