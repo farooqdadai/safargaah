@@ -143,6 +143,7 @@ section {
   flex: 0 0 100%;
   width: 100%;
   height: 100%;
+  background-color: var(--bg);
   background-size: cover;
   background-position: center;
 }
@@ -153,6 +154,45 @@ section {
 .hero-bottom {
   position: relative;
   z-index: 2;
+}
+
+.hero-arrows {
+  position: absolute;
+  right: 6vw;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 0.75rem;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-arrow {
+  pointer-events: auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(244, 241, 234, 0.18);
+  background: transparent;
+  color: rgba(244, 241, 234, 0.92);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease,
+    color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-arrow:hover {
+  transform: translateY(-2px);
+  border-color: rgba(244, 241, 234, 0.26);
+  background: rgba(8, 12, 10, 0.35);
+  color: var(--accent-2);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+}
+
+.hero-arrow:active {
+  transform: translateY(0);
 }
 
 .hero-top {
@@ -2732,6 +2772,7 @@ section {
 .nav-item:focus-visible,
 .step-btn:focus-visible,
 .carousel-btn:focus-visible,
+.hero-arrow:focus-visible,
 .tour-media:focus-visible,
 .tour-media-btn:focus-visible,
 .video-card:focus-visible,
@@ -2919,6 +2960,10 @@ section {
 
   .hero-microcopy {
     grid-template-columns: 1fr;
+  }
+
+  .hero-arrows {
+    display: none;
   }
 
   .weekend-stack {

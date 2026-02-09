@@ -746,6 +746,13 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    heroSlides.forEach((slide) => {
+      const img = new window.Image();
+      img.src = slide.image;
+    });
+  }, []);
+
+  useEffect(() => {
     if (isPaused || activeVideo || heroAnimating) {
       return undefined;
     }
@@ -811,23 +818,59 @@ export default function Home() {
     setHeroIndex(index + 1);
   };
 
-  const goNext = () => {
+  const goNext = useCallback(() => {
     if (heroAnimating) {
       return;
     }
     setHeroAnimating(true);
     armHeroFallback();
     setHeroIndex((prev) => prev + 1);
-  };
+  }, [armHeroFallback, heroAnimating]);
 
-  const goPrev = () => {
+  const goPrev = useCallback(() => {
     if (heroAnimating) {
       return;
     }
     setHeroAnimating(true);
     armHeroFallback();
     setHeroIndex((prev) => prev - 1);
-  };
+  }, [armHeroFallback, heroAnimating]);
+
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (activeVideo) {
+        return;
+      }
+
+      const tag = event.target?.tagName?.toLowerCase?.();
+      if (
+        tag === "input" ||
+        tag === "textarea" ||
+        tag === "select" ||
+        event.target?.isContentEditable
+      ) {
+        return;
+      }
+
+      // Only hijack arrow keys when the hero is on screen (near top of the page).
+      if (window.scrollY > window.innerHeight * 0.9) {
+        return;
+      }
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        goPrev();
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        goNext();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [activeVideo, goNext, goPrev]);
 
   const handlePointerDown = (event) => {
     pointerStartRef.current = event.clientX;
@@ -925,6 +968,25 @@ export default function Home() {
               </button>
             ))}
           </div>
+        </div>
+
+        <div className="hero-arrows" aria-label="Hero navigation">
+          <button
+            type="button"
+            className="hero-arrow prev"
+            onClick={goPrev}
+            aria-label="Previous hero slide"
+          >
+            {"\u2190"}
+          </button>
+          <button
+            type="button"
+            className="hero-arrow next"
+            onClick={goNext}
+            aria-label="Next hero slide"
+          >
+            {"\u2192"}
+          </button>
         </div>
 
         <div className="hero-bottom reveal delay-3">
