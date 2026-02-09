@@ -1537,7 +1537,10 @@ section {
 
 .weekend {
   position: relative;
-  padding: 0 6vw;
+  padding: 3.75rem 6vw;
+  background: rgba(5, 7, 6, 0.98);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .weekend-intent-head {
@@ -1560,21 +1563,14 @@ section {
   position: relative;
   border-radius: 20px;
   padding: 1.8rem;
-  background: linear-gradient(160deg, rgba(10, 15, 13, 0.92), rgba(6, 9, 8, 0.86));
+  background: rgba(8, 12, 10, 0.72);
   border: 1px solid rgba(244, 241, 234, 0.08);
   box-shadow: 0 22px 54px rgba(0, 0, 0, 0.42);
   overflow: hidden;
 }
 
 .weekend-intent-card::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  background:
-    radial-gradient(circle at 10% 15%, rgba(126, 181, 156, 0.18), transparent 55%),
-    radial-gradient(circle at 90% 10%, rgba(226, 92, 46, 0.14), transparent 60%);
-  opacity: 0.9;
-  pointer-events: none;
+  content: none;
 }
 
 .weekend-intent-card > * {
@@ -1649,25 +1645,14 @@ section {
   position: relative;
   border-radius: 20px;
   padding: 1.8rem;
-  background: linear-gradient(
-    160deg,
-    rgba(10, 15, 13, 0.92),
-    rgba(6, 9, 8, 0.86)
-  );
+  background: rgba(8, 12, 10, 0.72);
   border: 1px solid rgba(244, 241, 234, 0.08);
   box-shadow: 0 22px 54px rgba(0, 0, 0, 0.42);
   overflow: hidden;
 }
 
 .day-card::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  background:
-    radial-gradient(circle at 10% 15%, rgba(126, 181, 156, 0.18), transparent 55%),
-    radial-gradient(circle at 90% 10%, rgba(226, 92, 46, 0.14), transparent 60%);
-  opacity: 0.9;
-  pointer-events: none;
+  content: none;
 }
 
 .day-card > * {
