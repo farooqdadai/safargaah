@@ -505,6 +505,18 @@ section {
   font-size: 0.8rem;
 }
 
+.section-sub {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 720px;
+  margin-top: 0.85rem;
+}
+
+.tours-sub,
+.routes-sub {
+  max-width: 560px;
+}
+
 .favorites-head h2 {
   font-family: var(--font-display), "Impact", sans-serif;
   font-size: clamp(1.85rem, 3.7vw, 3rem);
@@ -3069,6 +3081,7 @@ section {
   }
 
   .weekend-sub,
+  .section-sub,
   .plan-summary,
   .plan-seasons,
   .experience-copy {

@@ -306,24 +306,24 @@ const videos = [
 ];
 
 const experienceCopy =
-  "Safargaah brings Pakistan into one clean plan: alpine passes, turquoise lakes, heritage streets, and dramatic coastlines. Build your route with hikes, bazaars, and sunsets that feel endless.";
+  "Browse tour packages and weekend trips across Pakistan. Pick your time, your pace, and your start city, and we will help you shape the route.";
 
 const aboutHighlights = [
   {
-    title: "Northern Gateways",
-    text: "Snow-fed valleys, glacier roads, and pine forests that stay cool even in summer."
+    title: "Northern areas",
+    text: "Mountain valleys, alpine lakes, and glacier viewpoints for your multi-day tour."
   },
   {
-    title: "Heritage Heartlands",
-    text: "Ancient cities, royal gardens, and artisan bazaars alive with craft and color."
+    title: "Heritage cities",
+    text: "Old city walks, forts, museums, and bazaars with local food stops."
   },
   {
-    title: "Coastal Horizons",
-    text: "Sea cliffs, quiet fishing towns, and long drives along the Makran coast."
+    title: "Coast drives",
+    text: "Makran highway stops, sea cliffs, beaches, and sunset viewpoints."
   },
   {
-    title: "Desert Nights",
-    text: "Golden dunes, folk music evenings, and warm starlit camps."
+    title: "Desert escapes",
+    text: "Dunes, forts, and camp nights when you want something different."
   }
 ];
 
@@ -473,7 +473,7 @@ const activities = [
 const weekendItineraries = [
   {
     id: "isb-north",
-    title: "North Pakistan weekend from Islamabad",
+    title: "North Pakistan 2-day plan (from Islamabad)",
     city: "Islamabad",
     region: "north",
     seasons: ["spring", "summer", "autumn"],
@@ -533,7 +533,7 @@ const weekendItineraries = [
   },
   {
     id: "lhr-heritage",
-    title: "Heritage weekend from Lahore",
+    title: "Heritage 2-day plan (from Lahore)",
     city: "Lahore",
     region: "heritage",
     seasons: ["winter", "spring", "autumn"],
@@ -593,7 +593,7 @@ const weekendItineraries = [
   },
   {
     id: "khi-coast",
-    title: "Makran coast weekend from Karachi",
+    title: "Makran coast 2-day plan (from Karachi)",
     city: "Karachi",
     region: "coast",
     seasons: ["winter", "spring", "autumn"],
@@ -1020,11 +1020,11 @@ export default function Home() {
         <div className="about-grid">
           <div className="about-content reveal">
             <p className="kicker">What Safargaah offers</p>
-            <h2>Tours, weekends, and local clarity.</h2>
+            <h2>Tours and weekend trips in Pakistan</h2>
             <p className="about-copy">
-              Safargaah helps you plan Pakistan with complete tours, weekend
-              itineraries, and single-day adventures. Start with signature
-              spots, then pick the pace that fits your time.
+              Choose a multi-day tour package, a 2-day plan, or a single-day
+              adventure. Safargaah keeps routes realistic for Pakistan roads,
+              seasons, and travel time.
             </p>
             <div className="about-tags">
               {aboutTags.map((tag) => (
@@ -1052,8 +1052,12 @@ export default function Home() {
       <section className="tours" id="tours">
         <div className="tours-head reveal">
           <div>
-            <p className="kicker">Complete tours</p>
-            <h2>North Pakistan, heritage cities, and the coast</h2>
+            <p className="kicker">Tour packages</p>
+            <h2>Explore tour plans</h2>
+            <p className="section-sub tours-sub">
+              Multi-day tours across Pakistan, including the north, heritage
+              cities, and the coast. Choose the one that fits your time.
+            </p>
           </div>
           <div className="tours-actions">
             <div className="carousel-controls">
@@ -1125,18 +1129,18 @@ export default function Home() {
           />
         </div>
         <div className="weekend-intent-head reveal">
-          <p className="kicker">Weekend freedom</p>
-          <h2>Only free on weekends? Pick an adventure or follow a plan.</h2>
+          <p className="kicker">Weekend trips</p>
+          <h2>One-day adventures and two-day plans</h2>
           <p className="weekend-sub">
-            Choose a single-day adventure when you want something quick. Or pick
-            a two-day plan when you want a complete loop with time built in.
+            Pick a quick single-day experience, or follow a simple two-day loop
+            based on where you start.
           </p>
         </div>
 
         <div className="weekend-stack">
           <div className="weekend-intent-card weekend-intent-card--single reveal">
             <div className="weekend-subhead">
-              <p className="kicker">Single experiences</p>
+              <p className="kicker">One-day adventures</p>
               <h3>Quick adventures you can do in a day</h3>
             </div>
             <div className="adventures-grid">
@@ -1160,7 +1164,7 @@ export default function Home() {
           <div className="weekend-intent-card weekend-intent-card--plan reveal">
             <div className="weekend-subhead">
               <p className="kicker">Two-day plans</p>
-              <h3>Ready-made loops with time built in</h3>
+              <h3>Two-day itineraries you can follow</h3>
             </div>
 
             <div className="weekend-plan-cards">
@@ -1214,7 +1218,11 @@ export default function Home() {
       <section className="favorites">
         <div className="favorites-head reveal">
           <p className="kicker">Destinations</p>
-          <h2>Signature spots of Pakistan</h2>
+          <h2>Top places to visit in Pakistan</h2>
+          <p className="section-sub">
+            Start with these destinations, then pick a tour package or a weekend
+            trip that matches your time.
+          </p>
         </div>
 
         <div className="card-grid">
@@ -1246,7 +1254,11 @@ export default function Home() {
         <div className="routes-head reveal">
           <div>
             <p className="kicker">Seasonal routes</p>
-            <h2>Routes across Pakistan by season</h2>
+            <h2>Plan a route by season</h2>
+            <p className="section-sub routes-sub">
+              Summer mountains, autumn cities, winter coast. These routes match
+              weather, roads, and travel pace.
+            </p>
           </div>
           <div className="carousel-controls">
             <button
@@ -1311,7 +1323,11 @@ export default function Home() {
 
         <div className="moments-head reveal">
           <p className="kicker">When to go</p>
-          <h2>When Pakistan looks its best</h2>
+          <h2>Best time to visit Pakistan</h2>
+          <p className="section-sub">
+            A quick guide to seasons, weather, and what to expect across the
+            country.
+          </p>
         </div>
 
         <div className="moments-grid">
@@ -1333,7 +1349,10 @@ export default function Home() {
         <div id="trust" className="trust-block">
           <div className="trust-head reveal">
             <p className="kicker">Trust</p>
-            <h2>Built for Pakistan travel</h2>
+            <h2>Travel planning you can trust</h2>
+            <p className="section-sub">
+              Local guides, vetted transport, and support when plans change.
+            </p>
           </div>
 
           <div className="trust-grid">
@@ -1376,12 +1395,12 @@ export default function Home() {
       >
         <div className="experience-text reveal">
           <p className="kicker">Ready to plan</p>
-          <h2>Build your next Safargaah escape</h2>
+          <h2>Plan your next Pakistan trip</h2>
           <button type="button" className="play-line">
             <span className="play-btn" aria-hidden="true">
               <span />
             </span>
-            start with a weekend plan
+            explore weekend trips
           </button>
           <p className="experience-copy">{experienceCopy}</p>
           <div className="experience-ctas">
@@ -1390,14 +1409,14 @@ export default function Home() {
               className="intent-btn primary"
               onClick={() => scrollTo("tours")}
             >
-              Book a complete tour
+              Explore tours
             </button>
             <button
               type="button"
               className="intent-btn"
               onClick={() => scrollTo("weekend")}
             >
-              Weekend plan
+              Weekend trips
             </button>
           </div>
         </div>
