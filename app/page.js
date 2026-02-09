@@ -38,6 +38,40 @@ const getTourImages = (highlights) => {
   return Array.from({ length: 4 }, (_, idx) => source[idx % source.length]);
 };
 
+function TourMediaCarousel({ images }) {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused || images.length <= 1) {
+      return undefined;
+    }
+
+    const timer = window.setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 3500);
+
+    return () => window.clearInterval(timer);
+  }, [images.length, paused]);
+
+  return (
+    <div
+      className="tour-media"
+      aria-hidden="true"
+      onPointerEnter={() => setPaused(true)}
+      onPointerLeave={() => setPaused(false)}
+    >
+      {images.map((image, idx) => (
+        <div
+          key={`${idx}-${image}`}
+          className={`tour-media-slide ${idx === index ? "active" : ""}`}
+          style={{ backgroundImage: `url(${image})` }}
+        />
+      ))}
+    </div>
+  );
+}
+
 const heroSlides = [
   {
     id: "01",
@@ -901,17 +935,7 @@ export default function Home() {
             const images = getTourImages(tour.highlights);
             return (
               <article key={tour.id} className="tour-card">
-                <div className="tour-media" aria-hidden="true">
-                  {images.map((image, idx) => (
-                    <div
-                      key={`${tour.id}-img-${idx}`}
-                      className="tour-thumb"
-                      style={{
-                        backgroundImage: `url(${image})`
-                      }}
-                    />
-                  ))}
-                </div>
+                <TourMediaCarousel images={images} />
                 <div className="tour-meta">
                   <span>{tour.duration}</span>
                   <span>{tour.season}</span>

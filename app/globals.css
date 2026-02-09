@@ -1391,34 +1391,36 @@ section {
 }
 
 .tour-media {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.5rem;
-  height: 140px;
+  position: relative;
+  height: 150px;
   margin-bottom: 1.2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(244, 241, 234, 0.08);
+  overflow: hidden;
+  background: rgba(244, 241, 234, 0.03);
 }
 
-.tour-thumb {
-  border-radius: 14px;
+.tour-media-slide {
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center;
-  border: 1px solid rgba(244, 241, 234, 0.08);
-  box-shadow: inset 0 0 0 1px rgba(5, 7, 6, 0.25);
-  overflow: hidden;
-  position: relative;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  will-change: opacity;
   filter: saturate(1.05) contrast(1.05);
 }
 
-.tour-thumb::after {
+.tour-media-slide.active {
+  opacity: 1;
+}
+
+.tour-media-slide::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(5, 7, 6, 0.05) 0%,
-    rgba(5, 7, 6, 0.6) 100%
-  );
-  opacity: 0.45;
+  background: linear-gradient(180deg, rgba(5, 7, 6, 0.08) 0%, rgba(5, 7, 6, 0.7) 100%);
+  opacity: 0.55;
 }
 
 .tour-meta {
