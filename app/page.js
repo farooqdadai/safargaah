@@ -38,6 +38,23 @@ const getTourImages = (highlights) => {
   return Array.from({ length: 4 }, (_, idx) => source[idx % source.length]);
 };
 
+const titleCase = (value) => {
+  if (!value) {
+    return "";
+  }
+  return value.charAt(0).toUpperCase() + value.slice(1);
+};
+
+const formatSeasons = (seasons) =>
+  (seasons ?? []).map((s) => titleCase(s)).filter(Boolean).join(" / ");
+
+const planImages = {
+  north: mountainImage,
+  heritage: heroImage,
+  coast: beachImage,
+  desert: beachImage
+};
+
 function TourMediaCarousel({ images, label }) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -708,9 +725,6 @@ export default function Home() {
   const [activeVideo, setActiveVideo] = useState(null);
   const [routesApi, setRoutesApi] = useState(null);
   const [toursApi, setToursApi] = useState(null);
-  const [activeWeekendId, setActiveWeekendId] = useState(
-    weekendItineraries[0].id
-  );
   const pointerStartRef = useRef(null);
   const heroAnimTimerRef = useRef(null);
 
@@ -759,10 +773,6 @@ export default function Home() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [activeVideo]);
-
-  const activeWeekend =
-    weekendItineraries.find((itinerary) => itinerary.id === activeWeekendId) ||
-    weekendItineraries[0];
 
   const activeSlideIndex =
     ((heroIndex - 1) % HERO_LEN + HERO_LEN) % HERO_LEN;
@@ -1045,14 +1055,9 @@ export default function Home() {
           <p className="kicker">Weekend freedom</p>
           <h2>Only free on weekends? Pick an adventure or follow a plan.</h2>
           <p className="weekend-sub">
-            Single experiences work for a one-day escape, and weekend plans give
-            you a full two-day loop.
+            Choose a single-day adventure when you want something quick. Or pick
+            a two-day plan when you want a complete loop with time built in.
           </p>
-          <div className="weekend-format" aria-hidden="true">
-            <span className="format-chip single">Single day</span>
-            <span className="format-chip sat">Saturday</span>
-            <span className="format-chip sun">Sunday</span>
-          </div>
         </div>
 
         <div className="weekend-stack">
@@ -1082,53 +1087,60 @@ export default function Home() {
           <div className="weekend-divider" aria-hidden="true" />
 
           <div className="weekend-intent-card weekend-intent-card--plan reveal">
-            <div className="weekend-plan-head">
-              <div>
-                <p className="kicker">Weekend plans</p>
-                <h3>{activeWeekend.title}</h3>
-                <p className="weekend-meta">Start from {activeWeekend.city}</p>
-              </div>
-              <label className="field">
-                <span>Itinerary</span>
-                <select
-                  value={activeWeekendId}
-                  onChange={(event) => setActiveWeekendId(event.target.value)}
-                >
-                  {weekendItineraries.map((itinerary) => (
-                    <option key={itinerary.id} value={itinerary.id}>
-                      {itinerary.title}
-                    </option>
-                  ))}
-                </select>
-              </label>
+            <div className="weekend-subhead">
+              <p className="kicker">Two-day plans</p>
+              <h3>Ready-made loops with time built in</h3>
+              <p className="weekend-meta">
+                Upcoming dates, timing, and booking will move to a dedicated
+                page soon.
+              </p>
             </div>
 
-            <div className="weekend-grid">
-              {activeWeekend.days.map((plan, index) => (
-                <article
-                  key={plan.day}
-                  className={`day-card day-${plan.day.toLowerCase()} reveal delay-${
-                    index + 1
-                  }`}
-                >
-                  <div className="day-top">
-                    <span className="day-label">{plan.day}</span>
-                    <span className="day-theme">{plan.theme}</span>
-                  </div>
-                  <h3>{plan.title}</h3>
-                  <ul className="day-list">
-                    {plan.items.map((item) => (
-                      <li key={item.time} className="day-slot">
-                        <span className="day-time">{item.time}</span>
-                        <div>
-                          <p className="day-what">{item.what}</p>
-                          <p className="day-detail">{item.detail}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
+            <div className="weekend-plan-cards">
+              {weekendItineraries.map((itinerary, index) => {
+                const themes = (itinerary.days ?? [])
+                  .slice(0, 2)
+                  .map((day) => day.theme)
+                  .filter(Boolean);
+                const summary =
+                  themes.length >= 2
+                    ? `${themes[0]} + ${themes[1]}`
+                    : themes[0] || "A complete two-day loop with pacing built in.";
+
+                const image = planImages[itinerary.region] || mountainImage;
+
+                return (
+                  <article
+                    key={itinerary.id}
+                    className={`weekend-plan-card plan-${itinerary.region} reveal delay-${
+                      (index % 3) + 1
+                    }`}
+                  >
+                    <div
+                      className="plan-media"
+                      aria-hidden="true"
+                      style={{
+                        backgroundImage: `url(${image})`
+                      }}
+                    />
+                    <div className="plan-body">
+                      <div className="plan-meta-row">
+                        <span className="plan-pill">{itinerary.city}</span>
+                        <span className="plan-pill">{titleCase(itinerary.style)}</span>
+                        <span className="plan-pill">2 days</span>
+                      </div>
+                      <h4 className="plan-title">{itinerary.title}</h4>
+                      <p className="plan-summary">{summary}</p>
+                      <p className="plan-seasons">
+                        Best: {formatSeasons(itinerary.seasons)}
+                      </p>
+                      <button type="button" className="intent-btn" disabled>
+                        Details soon
+                      </button>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </div>
