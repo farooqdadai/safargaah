@@ -78,7 +78,6 @@ main.page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: clamp(3.5rem, 5vw, 6rem);
   position: relative;
   z-index: 1;
 }
@@ -445,7 +444,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  padding-top: 1rem;
+  padding: 3.25rem 6vw;
 }
 
 .favorites-head {
@@ -662,7 +661,7 @@ section {
 
 .routes {
   position: relative;
-  padding: 0 6vw;
+  padding: 3.25rem 6vw;
   background: transparent;
 }
 
@@ -2032,7 +2031,7 @@ section {
 
 .moments {
   position: relative;
-  padding: 0 6vw;
+  padding: 3.25rem 6vw;
 }
 
 .moments-head {
@@ -2097,7 +2096,7 @@ section {
 
 .trust {
   position: relative;
-  padding: 0 6vw;
+  padding: 3.25rem 6vw;
 }
 
 .trust-head {
