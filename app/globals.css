@@ -1617,6 +1617,17 @@ section {
   box-shadow: 0 30px 64px rgba(0, 0, 0, 0.5);
 }
 
+.weekend-intent-card--single,
+.weekend-intent-card--plan {
+  background: transparent;
+  box-shadow: none;
+}
+
+.weekend-intent-card--single:hover,
+.weekend-intent-card--plan:hover {
+  box-shadow: none;
+}
+
 .weekend-intent-card > * {
   position: relative;
   z-index: 1;
