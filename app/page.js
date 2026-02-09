@@ -933,6 +933,18 @@ export default function Home() {
       </section>
 
       <section className="about">
+        <div className="about-bg" aria-hidden="true">
+          <video
+            className="about-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            src="/videos/mountainpeak.mp4"
+          />
+        </div>
+
         <div className="about-grid">
           <div className="about-content reveal">
             <p className="kicker">What Safargaah offers</p>
