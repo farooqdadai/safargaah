@@ -163,7 +163,7 @@ const videos = [
 ];
 
 const experienceCopy =
-  "Pakistan offers every landscape in one journey: alpine passes, turquoise lakes, bustling heritage cities, and dramatic coastlines. Plan your days with hikes, bazaars, and sunsets that feel endless.";
+  "Safargaah brings Pakistan into one clean plan: alpine passes, turquoise lakes, heritage streets, and dramatic coastlines. Build your route with hikes, bazaars, and sunsets that feel endless.";
 
 const aboutHighlights = [
   {
@@ -571,10 +571,43 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="about">
+        <div className="about-grid">
+          <div className="about-content reveal">
+            <p className="kicker">About Safargaah</p>
+            <h2>Pakistan, curated for the weekend.</h2>
+            <p className="about-copy">
+              Safargaah helps you plan trips across Pakistan with clear routes,
+              weekend plans, and handpicked highlights. Start with signature
+              spots, borrow a seasonal loop, and shape the pace to your time.
+            </p>
+            <div className="about-tags">
+              {aboutTags.map((tag) => (
+                <span key={tag} className="about-tag">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="about-cards">
+            {aboutHighlights.map((item, index) => (
+              <article
+                key={item.title}
+                className={`about-card reveal delay-${index + 1}`}
+              >
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="favorites">
         <div className="favorites-head reveal">
-          <p className="kicker">Pakistan offers</p>
-          <h2>signature spots and scenic escapes</h2>
+          <p className="kicker">Destinations</p>
+          <h2>Signature spots to start with</h2>
         </div>
 
         <div className="card-grid">
@@ -602,37 +635,40 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="about">
-        <div className="about-grid">
-          <div className="about-content reveal">
-            <p className="kicker">About Pakistan</p>
-            <h2>One country, every landscape.</h2>
-            <p className="about-copy">
-              Pakistan blends alpine passes, vibrant heritage cities, desert
-              routes, and the Arabian Sea into one continuous journey. Move
-              from snow-capped ridges to riverside markets in a single day, and
-              still end the evening by the coast.
-            </p>
-            <div className="about-tags">
-              {aboutTags.map((tag) => (
-                <span key={tag} className="about-tag">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
+      <section className="weekend">
+        <div className="weekend-head reveal">
+          <p className="kicker">Weekend plans</p>
+          <h2>Saturday + Sunday, mapped out</h2>
+          <p className="weekend-sub">
+            Two days, one clean itinerary. Start from your city, swap stops by
+            season, and keep the pace relaxed.
+          </p>
+        </div>
 
-          <div className="about-cards">
-            {aboutHighlights.map((item, index) => (
-              <article
-                key={item.title}
-                className={`about-card reveal delay-${index + 1}`}
-              >
-                <h3>{item.title}</h3>
-                <p>{item.text}</p>
-              </article>
-            ))}
-          </div>
+        <div className="weekend-grid">
+          {weekendPlans.map((plan, index) => (
+            <article
+              key={plan.day}
+              className={`day-card reveal delay-${index + 1}`}
+            >
+              <div className="day-top">
+                <span className="day-label">{plan.day}</span>
+                <span className="day-theme">{plan.theme}</span>
+              </div>
+              <h3>{plan.title}</h3>
+              <ul className="day-list">
+                {plan.items.map((item) => (
+                  <li key={item.time} className="day-slot">
+                    <span className="day-time">{item.time}</span>
+                    <div>
+                      <p className="day-what">{item.what}</p>
+                      <p className="day-detail">{item.detail}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -697,8 +733,8 @@ export default function Home() {
       <section className="tours">
         <div className="tours-head reveal">
           <div>
-            <p className="kicker">Tour details</p>
-            <h2>Pakistan tours made for every traveler</h2>
+            <p className="kicker">Tours</p>
+            <h2>Packages made for every traveler</h2>
           </div>
           <div className="carousel-controls">
             <button
@@ -743,43 +779,6 @@ export default function Home() {
         </Carousel>
       </section>
 
-      <section className="weekend">
-        <div className="weekend-head reveal">
-          <p className="kicker">Weekend plans</p>
-          <h2>Saturday + Sunday, mapped out</h2>
-          <p className="weekend-sub">
-            Two days, one clean itinerary. Start from your city, swap stops by
-            season, and keep the pace relaxed.
-          </p>
-        </div>
-
-        <div className="weekend-grid">
-          {weekendPlans.map((plan, index) => (
-            <article
-              key={plan.day}
-              className={`day-card reveal delay-${index + 1}`}
-            >
-              <div className="day-top">
-                <span className="day-label">{plan.day}</span>
-                <span className="day-theme">{plan.theme}</span>
-              </div>
-              <h3>{plan.title}</h3>
-              <ul className="day-list">
-                {plan.items.map((item) => (
-                  <li key={item.time} className="day-slot">
-                    <span className="day-time">{item.time}</span>
-                    <div>
-                      <p className="day-what">{item.what}</p>
-                      <p className="day-detail">{item.detail}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section
         className="activities"
         style={{
@@ -788,7 +787,7 @@ export default function Home() {
       >
         <div className="activities-head reveal">
           <p className="kicker">Experiences</p>
-          <h2>Adventure, culture, and adrenaline</h2>
+          <h2>Adventure, culture, and add-ons</h2>
         </div>
 
         <div className="activities-grid">
@@ -808,7 +807,7 @@ export default function Home() {
       <section className="blog">
         <div className="blog-head reveal">
           <p className="kicker">Journal</p>
-          <h2>Stories from across Pakistan</h2>
+          <h2>Stories and quick travel notes</h2>
         </div>
 
         <div className="blog-grid">
@@ -847,13 +846,13 @@ export default function Home() {
         }}
       >
         <div className="experience-text reveal">
-          <p className="kicker">Pakistan offers</p>
-          <h2>Travel and enjoy your holiday</h2>
+          <p className="kicker">Ready to plan</p>
+          <h2>Build your next Safargaah escape</h2>
           <button type="button" className="play-line">
             <span className="play-btn" aria-hidden="true">
               <span />
             </span>
-            choose your Pakistan escape
+            start with a weekend plan
           </button>
           <p className="experience-copy">{experienceCopy}</p>
         </div>
