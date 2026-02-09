@@ -60,7 +60,7 @@ export default function PlacePage({ params }) {
 
       <footer className="footer">
         <div className="footer-brand">
-          Copyright 2026 Pakistan Tourism. All rights reserved.
+          Copyright 2026 Safargaah. All rights reserved.
         </div>
         <div className="socials">
           {["IG", "YT", "TW"].map((label) => (

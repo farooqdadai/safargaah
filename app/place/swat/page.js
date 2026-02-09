@@ -402,7 +402,7 @@ export default function Home() {
 
         <div className="brand-divider">
           <span />
-          <div className="brand-mark">cm</div>
+          <div className="brand-mark">SG</div>
           <span />
         </div>
       </section>
@@ -453,7 +453,7 @@ export default function Home() {
 
       <footer className="footer">
         <div className="footer-brand">
-          Copyright 2026 Swat Valley Tourism. All rights reserved.
+          Copyright 2026 Safargaah. All rights reserved.
         </div>
         <div className="socials">
           {["IG", "YT", "TW"].map((label) => (

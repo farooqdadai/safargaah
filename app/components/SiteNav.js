@@ -12,7 +12,7 @@ export default function SiteNav({ activePlace }) {
     <div className="hero-top">
       <Link href="/" className="logo">
         <span className="logo-dot" />
-        <span>Travel</span>
+        <span>Safargaah</span>
       </Link>
       <nav className="hero-nav">
         <div className="nav-dropdown">

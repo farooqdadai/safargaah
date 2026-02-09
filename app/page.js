@@ -297,6 +297,59 @@ const blogArticles = [
   }
 ];
 
+const weekendPlans = [
+  {
+    day: "Saturday",
+    theme: "Scenic reset",
+    title: "Mountains, viewpoints, and a slow evening",
+    items: [
+      {
+        time: "Morning",
+        what: "Depart early",
+        detail:
+          "Start at sunrise for cooler roads, a chai stop, and the first viewpoint before the crowds."
+      },
+      {
+        time: "Afternoon",
+        what: "Hike + lunch",
+        detail:
+          "Pick a short trail or chairlift ride, then do a lakeside or riverside lunch with time to wander."
+      },
+      {
+        time: "Evening",
+        what: "Golden hour",
+        detail:
+          "Catch sunset from a ridge or hilltop cafe, then keep the night light with local food and a calm walk."
+      }
+    ]
+  },
+  {
+    day: "Sunday",
+    theme: "Heritage + food",
+    title: "Old streets, museums, and a clean drive back",
+    items: [
+      {
+        time: "Morning",
+        what: "Heritage walk",
+        detail:
+          "Start with a fort, museum, or old-city lane while it is quiet. Keep it photo-first, shopping later."
+      },
+      {
+        time: "Afternoon",
+        what: "Bazaar + chai",
+        detail:
+          "Do a short bazaar loop for crafts and spices, then a long chai break before heading out."
+      },
+      {
+        time: "Evening",
+        what: "Return smooth",
+        detail:
+          "Leave before dark, build in one scenic stop, and end with street food near home."
+      }
+    ]
+  }
+];
+
 const SLIDE_INTERVAL = 7000;
 
 export default function Home() {
@@ -544,7 +597,7 @@ export default function Home() {
 
         <div className="brand-divider">
           <span />
-          <div className="brand-mark">cm</div>
+          <div className="brand-mark">SG</div>
           <span />
         </div>
       </section>
@@ -690,6 +743,43 @@ export default function Home() {
         </Carousel>
       </section>
 
+      <section className="weekend">
+        <div className="weekend-head reveal">
+          <p className="kicker">Weekend plans</p>
+          <h2>Saturday + Sunday, mapped out</h2>
+          <p className="weekend-sub">
+            Two days, one clean itinerary. Start from your city, swap stops by
+            season, and keep the pace relaxed.
+          </p>
+        </div>
+
+        <div className="weekend-grid">
+          {weekendPlans.map((plan, index) => (
+            <article
+              key={plan.day}
+              className={`day-card reveal delay-${index + 1}`}
+            >
+              <div className="day-top">
+                <span className="day-label">{plan.day}</span>
+                <span className="day-theme">{plan.theme}</span>
+              </div>
+              <h3>{plan.title}</h3>
+              <ul className="day-list">
+                {plan.items.map((item) => (
+                  <li key={item.time} className="day-slot">
+                    <span className="day-time">{item.time}</span>
+                    <div>
+                      <p className="day-what">{item.what}</p>
+                      <p className="day-detail">{item.detail}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section
         className="activities"
         style={{
@@ -796,7 +886,7 @@ export default function Home() {
 
       <footer className="footer">
         <div className="footer-brand">
-          Copyright 2026 Pakistan Tourism. All rights reserved.
+          Copyright 2026 Safargaah. All rights reserved.
         </div>
         <div className="socials">
           {["IG", "YT", "TW"].map((label) => (

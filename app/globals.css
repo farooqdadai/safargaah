@@ -923,6 +923,132 @@ section {
   font-size: 0.65rem;
 }
 
+.weekend {
+  position: relative;
+  padding: 0 6vw;
+}
+
+.weekend-head {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.weekend-sub {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 720px;
+}
+
+.weekend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem;
+  align-items: stretch;
+}
+
+.day-card {
+  position: relative;
+  border-radius: 20px;
+  padding: 1.8rem;
+  background: linear-gradient(
+    160deg,
+    rgba(10, 15, 13, 0.92),
+    rgba(6, 9, 8, 0.86)
+  );
+  border: 1px solid rgba(244, 241, 234, 0.08);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+}
+
+.day-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(126, 181, 156, 0.18), transparent 55%),
+    radial-gradient(circle at 90% 10%, rgba(226, 92, 46, 0.14), transparent 60%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.day-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.day-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 0.22rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-bottom: 1.1rem;
+}
+
+.day-label {
+  color: var(--accent-2);
+  font-family: var(--font-display), "Impact", sans-serif;
+}
+
+.day-theme {
+  color: rgba(244, 241, 234, 0.85);
+}
+
+.day-card h3 {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 1.35rem;
+  margin-bottom: 1.3rem;
+}
+
+.day-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.day-slot {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 0.95rem 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(244, 241, 234, 0.08);
+  background: rgba(244, 241, 234, 0.04);
+}
+
+.day-time {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.8rem;
+  color: var(--gold);
+}
+
+.day-what {
+  font-family: var(--font-display), "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.day-detail {
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
 .activities {
   position: relative;
   padding: 3.5rem 6vw;
@@ -1409,6 +1535,10 @@ section {
     align-items: flex-start;
   }
 
+  .weekend-grid {
+    grid-template-columns: 1fr;
+  }
+
   .embla__slide {
     flex: 0 0 52%;
   }
@@ -1473,6 +1603,11 @@ section {
 
   .hero-microcopy {
     grid-template-columns: 1fr;
+  }
+
+  .day-slot {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
   }
 
   .card-grid {

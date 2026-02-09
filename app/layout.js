@@ -15,9 +15,9 @@ const manrope = Manrope({
 });
 
 export const metadata = {
-  title: "Pakistan Tourism",
+  title: "Safargaah | Pakistan Travel",
   description:
-    "Explore mountains, lakes, heritage cities, and coastlines across Pakistan."
+    "Safargaah curates mountains, lakes, heritage cities, and coastlines across Pakistan."
 };
 
 export default function RootLayout({ children }) {
