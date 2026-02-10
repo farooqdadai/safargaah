@@ -48,7 +48,7 @@ export default function WinterTourDetailPage({ params }) {
             {winterTours.map((item, index) => (
               <Link
                 key={item.slug}
-                href={`/tour/winter/${item.slug}`}
+                href={`/tours/winter/${item.slug}`}
                 className={`package-card tour-card reveal delay-${
                   (index % 3) + 1
                 }`}
@@ -145,7 +145,7 @@ export default function WinterTourDetailPage({ params }) {
             </div>
 
             <div className="package-cta">
-              <Link className="intent-btn primary" href="/tour/winter">
+              <Link className="intent-btn primary" href="/tours/winter">
                 Back to winter tours
               </Link>
               {details?.itinerary?.length ? (
@@ -290,7 +290,7 @@ export default function WinterTourDetailPage({ params }) {
           </div>
 
           <div className="package-back">
-            <Link href="/tour/winter" className="intent-btn">
+            <Link href="/tours/winter" className="intent-btn">
               Back to winter tours
             </Link>
           </div>
@@ -312,4 +312,3 @@ export default function WinterTourDetailPage({ params }) {
     </main>
   );
 }
-

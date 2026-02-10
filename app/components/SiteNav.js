@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { tourCollections } from "../tours/catalog";
 
 const places = [
   { label: "Swat Valley", slug: "swat" },
@@ -6,8 +7,6 @@ const places = [
   { label: "Skardu", slug: "skardu" },
   { label: "Gwadar Coast", slug: "gwadar" }
 ];
-
-const tours = [{ label: "Winter", slug: "winter" }];
 
 export default function SiteNav({ activePlace, activeTour }) {
   return (
@@ -52,13 +51,13 @@ export default function SiteNav({ activePlace, activeTour }) {
             <span className="nav-caret" aria-hidden="true" />
           </button>
           <div className="dropdown-menu" role="menu">
-            {tours.map((tour) => (
+            {tourCollections.map((tour) => (
               <Link
                 key={tour.slug}
                 className={`dropdown-item ${
                   activeTour === tour.slug ? "active" : ""
                 }`}
-                href={`/tour/${tour.slug}`}
+                href={`/tours/${tour.slug}`}
                 role="menuitem"
               >
                 {tour.label}
@@ -66,12 +65,15 @@ export default function SiteNav({ activePlace, activeTour }) {
             ))}
           </div>
         </div>
-        <span className="nav-sep" aria-hidden="true" />
-        <Link href="/package" className="nav-item">
-          Packages
-        </Link>
+
         <span className="nav-item disabled" aria-disabled="true">
-          Experiences
+          Treks
+        </span>
+        <span className="nav-item disabled" aria-disabled="true">
+          Reviews
+        </span>
+        <span className="nav-item disabled" aria-disabled="true">
+          Contact
         </span>
       </nav>
     </div>

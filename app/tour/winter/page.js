@@ -46,7 +46,7 @@ export default function WinterToursPage() {
           {winterTours.map((tour, index) => (
             <Link
               key={tour.slug}
-              href={`/tour/winter/${tour.slug}`}
+              href={`/tours/winter/${tour.slug}`}
               className={`package-card tour-card reveal delay-${
                 (index % 3) + 1
               }`}
@@ -89,4 +89,3 @@ export default function WinterToursPage() {
     </main>
   );
 }
-

@@ -1027,9 +1027,9 @@ export default function Home() {
             </p>
             <h2>Tours and weekend trips in Pakistan</h2>
             <p className="about-copy">
-              Choose a multi-day tour package, a 2-day plan, or a single-day
-              adventure. Safargaah keeps routes realistic for Pakistan roads,
-              seasons, and travel time.
+              Choose a multi-day tour, a 2-day plan, or a single-day adventure.
+              Safargaah keeps routes realistic for Pakistan roads, seasons, and
+              travel time.
             </p>
             <div className="about-tags">
               {aboutTags.map((tag) => (
@@ -1058,7 +1058,7 @@ export default function Home() {
         <div className="tours-head reveal">
           <div>
             <p className="kicker">
-              Tour packages{" "}
+              Tours{" "}
               <span className="urdu-inline" lang="ur" dir="rtl">
                 پیکجز
               </span>
@@ -1066,7 +1066,7 @@ export default function Home() {
             <h2>Explore tour plans</h2>
             <p className="section-sub tours-sub">
               Multi-day tours across Pakistan, including the north, heritage
-              cities, and the coast. Choose the one that fits your time.
+              cities, and the coast. Pick a plan that fits your time.
             </p>
           </div>
           <div className="tours-actions">
@@ -1088,8 +1088,8 @@ export default function Home() {
                 {"\u2192"}
               </button>
             </div>
-            <Link href="/#tours" className="intent-btn primary">
-              Show all packages
+            <Link href="/tours" className="intent-btn primary">
+              Show all tours
             </Link>
           </div>
         </div>
@@ -1240,7 +1240,7 @@ export default function Home() {
           </p>
           <h2>Top places to visit in Pakistan</h2>
           <p className="section-sub">
-            Start with these destinations, then pick a tour package or a weekend
+            Start with these destinations, then pick a tour plan or a weekend
             trip that matches your time.
           </p>
         </div>
