@@ -2914,6 +2914,51 @@ section {
   font-size: 0.95rem;
 }
 
+.tour-card-topline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18rem;
+  font-size: 0.72rem;
+  color: rgba(244, 241, 234, 0.86);
+}
+
+.tour-card-sep {
+  opacity: 0.6;
+}
+
+.tour-card-summary {
+  max-width: 58ch;
+}
+
+.tour-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+  margin-top: 0.4rem;
+}
+
+.tour-card-cta {
+  text-transform: uppercase;
+  letter-spacing: 0.22rem;
+  font-size: 0.7rem;
+  color: var(--accent-2);
+}
+
+.tour-card-tag {
+  border: 1px solid rgba(244, 241, 234, 0.14);
+  background: rgba(8, 12, 10, 0.35);
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.65rem;
+  color: rgba(244, 241, 234, 0.86);
+}
+
 .package-highlights {
   display: flex;
   flex-wrap: wrap;

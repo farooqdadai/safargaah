@@ -7,7 +7,9 @@ const places = [
   { label: "Gwadar Coast", slug: "gwadar" }
 ];
 
-export default function SiteNav({ activePlace }) {
+const tours = [{ label: "Winter", slug: "winter" }];
+
+export default function SiteNav({ activePlace, activeTour }) {
   return (
     <div className="hero-top">
       <Link href="/" className="logo">
@@ -35,6 +37,31 @@ export default function SiteNav({ activePlace }) {
                 role="menuitem"
               >
                 {place.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="nav-dropdown">
+          <button
+            type="button"
+            className="nav-item nav-trigger"
+            aria-haspopup="menu"
+          >
+            Tours
+            <span className="nav-caret" aria-hidden="true" />
+          </button>
+          <div className="dropdown-menu" role="menu">
+            {tours.map((tour) => (
+              <Link
+                key={tour.slug}
+                className={`dropdown-item ${
+                  activeTour === tour.slug ? "active" : ""
+                }`}
+                href={`/tour/${tour.slug}`}
+                role="menuitem"
+              >
+                {tour.label}
               </Link>
             ))}
           </div>
